@@ -50,3 +50,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Editor config
+
+.vscode/
+
+# Build files
+
+build/
+
+# Binaries
+
+minishell
+!minishell/
