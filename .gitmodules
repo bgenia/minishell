@@ -1,0 +1,7 @@
+[submodule "libft"]
+	path = lib/libft
+	url = https://github.com/bgenia/libft
+
+[submodule "maketools"]
+	path = maketools
+	url = https://github.com/bgenia/maketools
