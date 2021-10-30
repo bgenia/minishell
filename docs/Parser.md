@@ -36,5 +36,5 @@ and_or              = pipeline
 
 pipeline            = command { PIPE command }
 command             = { redirection } [ WORD { redirection } ]
-redirection         = (RL | RR | RRA | RHD) WORD
+redirection         = ( RL | RR | RRA | RHD ) WORD
 ```
