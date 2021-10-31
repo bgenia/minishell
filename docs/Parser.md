@@ -1,6 +1,7 @@
 # Lexer/Parser
 
-## Tokens
+## 1. Lexer
+Tokens
 ```
 # Mandatory part
 
@@ -24,8 +25,18 @@ RP      =   )
 
 > `=r`, `|r` - Regular expressions
 
-## Grammar
+## 2. Expander
+Variable placeholder pattern (regexp): `\$[^$\s]+`
 
+(Bonus) Wildcard (`*`, `~`) expansion happens here.
+
+## 3. Preparser (temporary name)
+1. If an unquoted word contains a whitespace, it must be split into multiple unquoted words.
+1. If a quoted and an unquoted word are not separated by whitespace, they must be merged into single quoted word.
+1. All remaining whitespace tokens must be removed.
+
+## 4. Parser
+Grammar
 ```
 # Bonus part
 
