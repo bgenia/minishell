@@ -1,4 +1,6 @@
 SRC@src := \
+	src/expander/expand_token.c \
+	src/expander/find_next_var_placeholder.c \
 	src/lexer/lexer_utils/is_redirection_char.c \
 	src/lexer/lexer_utils/is_word_delimiter.c \
 	src/lexer/lexer_utils/is_quote.c \
