@@ -1,2 +1,19 @@
 SRC@src := \
+	src/lexer/lexer_utils/is_redirection_char.c \
+	src/lexer/lexer_utils/is_word_delimiter.c \
+	src/lexer/lexer_utils/is_quote.c \
+	src/lexer/token/is_redirection.c \
+	src/lexer/lexer/lexer_analyze.c \
+	src/lexer/lexer/lexer_lex_quoted_word.c \
+	src/lexer/lexer/lexer_lex_redirection.c \
+	src/lexer/lexer/lexer_lex_pipe.c \
+	src/lexer/lexer/base/lexer_destroy.c \
+	src/lexer/lexer/base/lexer_create.c \
+	src/lexer/lexer/utils/lexer_skip.c \
+	src/lexer/lexer/utils/lexer_add_token.c \
+	src/lexer/lexer/utils/lexer_raise_error.c \
+	src/lexer/lexer/utils/lexer_peek.c \
+	src/lexer/lexer/utils/lexer_is_end.c \
+	src/lexer/lexer/lexer_lex_whitespace.c \
+	src/lexer/lexer/lexer_lex_simple_word.c \
 	src/main.c \
