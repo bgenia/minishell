@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:50:17 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:27:20 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/10/31 15:14:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ is_redirection(t_token_type type);
 typedef struct s_token
 {
 	t_token_type	type;
-	bool			expandable;
+	bool			is_expandable;
+	bool			is_quoted;
 	int				fd;
 	char			*value;
 	size_t			position;
