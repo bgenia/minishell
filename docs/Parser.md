@@ -12,6 +12,7 @@ RHD     =r  \d?<<
 WORD    =r  [^|<>\s]+
         |r  "*?"
         |r  '*?'
+SPACE   =r  \s+
 
 # Bonus part
 
@@ -35,6 +36,6 @@ and_or              = pipeline
 # Mandatory part
 
 pipeline            = command { PIPE command }
-command             = { redirection } [ WORD { redirection } ]
+command             = { redirection } [ WORD { redirection | WORD } ]
 redirection         = ( RL | RR | RRA | RHD ) WORD
 ```
