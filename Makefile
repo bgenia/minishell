@@ -12,6 +12,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 
+LDLIBS += -lreadline
+
 ifndef DEBUG_MODE
 
 export FT_OPTIONS := FT_MALLOC_EXIT
