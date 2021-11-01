@@ -1,4 +1,8 @@
 SRC@src := \
+	src/preparser/remove_whitespaces.c \
+	src/preparser/merge_adjacent_words.c \
+	src/preparser/split_simple_words.c \
+	src/preparser/preparse.c \
 	src/expander/expand_token.c \
 	src/expander/find_next_var_placeholder.c \
 	src/lexer/lexer_utils/is_redirection_char.c \
