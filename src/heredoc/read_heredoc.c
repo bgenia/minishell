@@ -23,20 +23,13 @@ char	*get_name_heredoc(char *str)
 	char	*name;
 
 	i = 1;
-	while	(str[i] && str[i - 1] != '<' && str[i] != '<')
-	{
+	while(str[i] && str[i - 1] != '<' && str[i] != '<')
 		i++;
-	}
-	printf("%zu", i);
-	while (str[i] == ' ')
-		i++;
-		printf("%zu", i);
-
 	j = i;
-	while (str[j] != ' ' || str[j] != '\n')
+while(str[j] && str[j] != '\n')
 		j++;
 	name = calloc(sizeof(char), j - i + 1);
-	ft_strlcpy(name, &str[i], j - i + 1);
+	ft_strlcpy(name, &str[i + 2], j - i );
 	return(name);
 }
 
@@ -51,10 +44,11 @@ char	*read_heredoc(char *name)
 		return ("");
 	while (ft_strcmp(temp, name))
 	{
-		ft_strlcat(input, temp, ft_strlen(input) + ft_strlen(temp) + 3);
+		ft_strjoin(input, temp);
 		free(temp);
 		temp = readline("heredoc> ");
 	}
+	ft_strjoin(input, temp);
 	free(temp);
 	return(input);
 }
