@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:39:45 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:20:06 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/09 20:43:11 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,10 @@
 
 typedef enum e_lexer_status
 {
-	LEXER_ERROR = -1,
-	LEXER_OK
-}	t_lexer_status;
-
-typedef enum e_lexer_error
-{
+	LEXER_OK,
 	LEXER_ERROR_NO_SOURCE,
 	LEXER_ERROR_UNCLOSED_QUOTE
-}	t_lexer_error;
+}	t_lexer_status;
 
 typedef struct s_lexer
 {
@@ -37,7 +32,6 @@ typedef struct s_lexer
 	size_t			length;
 	t_token			**vec_tokens;
 	t_lexer_status	status;
-	t_lexer_error	error;
 }	t_lexer;
 
 // Create / Destroy
@@ -74,7 +68,7 @@ lexer_add_token(
 	);
 
 t_lexer_status
-lexer_raise_error(t_lexer *lexer, t_lexer_error error);
+lexer_set_status(t_lexer *lexer, t_lexer_status status);
 
 char
 lexer_peek(t_lexer *lexer, int offset);
