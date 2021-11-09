@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:50:17 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 15:14:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/09 20:26:07 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef enum e_token_type
 	TOKEN_RRA,
 	TOKEN_RHD,
 	TOKEN_WORD,
-	TOKEN_SPACE
+	TOKEN_SPACE,
+	TOKEN_EOF
 }	t_token_type;
 
 bool
