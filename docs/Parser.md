@@ -11,8 +11,8 @@ RR      =r  \d?>
 RRA     =r  \d?>>
 RHD     =r  \d?<<
 WORD    =r  [^|<>\s]+
-        |r  "*?"
-        |r  '*?'
+        |r  ".*?"
+        |r  '.*?'
 SPACE   =r  \s+
 
 # Bonus part
@@ -46,7 +46,8 @@ and_or              = pipeline
 
 # Mandatory part
 
-pipeline            = command { PIPE command }
-command             = { redirection } [ WORD { redirection | WORD } ]
-redirection         = ( RL | RR | RRA | RHD ) WORD
+pipeline            = [ SPACE ] command { [ SPACE ] PIPE command [ SPACE ] }
+command             = { [ SPACE ] redirection | word [ SPACE ] }
+redirection         = ( RL | RR | RRA | RHD ) [ SPACE ] word
+word                = WORD { WORD }
 ```
