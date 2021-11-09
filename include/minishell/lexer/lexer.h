@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:39:45 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:47:59 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/09 20:20:06 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_lexer
 	size_t			position;
 	size_t			length;
 	t_token			**vec_tokens;
-	bool			has_mergeable_word;
 	t_lexer_status	status;
 	t_lexer_error	error;
 }	t_lexer;
