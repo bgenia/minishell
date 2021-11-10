@@ -3,41 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 04:31:43 by ttanja            #+#    #+#             */
-/*   Updated: 2021/11/01 13:44:11 by ttanja           ###   ########.fr       */
+/*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
+/*   Updated: 2021/11/10 21:31:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell/heredoc/heredoc.h>
-#include <minishell/reade_line/read_line.h>
-#include <signal.h>
-#include <libft/memory/memory.h>
-#include <libft/string/string.h>
+#include <stdlib.h>
 
-t_global_v *g_val;
+#include <libft/io/printf.h>
 
-int	main(int argc, char const *argv[], char const *envp[])
+#include <libft/vector/vector.h>
+
+#include <minishell/lexer/lexer.h>
+#include <minishell/lexer/token.h>
+
+int	main(int argc, char **argv)
 {
+	t_token	*vec_tokens;
+	t_lexer	lexer;
+	size_t	i;
+
 	(void)argc;
-	(void)argv;
-	(void)envp;
-	g_val = ft_calloc(sizeof(t_global_v), 1);
-	if (!g_val)
-		return (1);
-	while (1)
+	vec_tokens = ft_vector_alloc_empty(sizeof(*vec_tokens));
+	lexer = lexer_create(&vec_tokens);
+	if (lexer_analyze(&lexer, argv[1]) != LEXER_OK)
+		ft_dprintf(STDERR_FILENO, "Lexer error!\n");
+	ft_printf("Token list [%u]:\n\n", ft_vector_get_size(vec_tokens));
+	i = 0;
+	while (i < ft_vector_get_size(vec_tokens))
 	{
-		g_val->str = read_line();
-		if (!ft_strcmp(g_val->str, "exit"))
-			break;
-		if (ft_strnstr(g_val->str, "<<", ft_strlen(g_val->str)))
-		{
-			g_val->str2 =  read_heredoc(get_name_heredoc(g_val->str));
-			printf("%s\n", g_val->str2);
-		}
-		// продолжение следует
+		ft_printf(
+			":%d %d \"%s\"[%d] { fd: %d, expandable: %d }\n",
+			vec_tokens[i].position,
+			vec_tokens[i].type,
+			vec_tokens[i].value,
+			vec_tokens[i].length,
+			vec_tokens[i].fd,
+			vec_tokens[i].is_expandable
+			);
+		free(vec_tokens[i].value);
+		i++;
 	}
-	return (0);
+	ft_printf("\nEnd.\n");
+	lexer_destroy(&lexer);
+	ft_vector_free(vec_tokens);
 }
-  
