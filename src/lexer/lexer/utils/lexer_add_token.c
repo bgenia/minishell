@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 09:44:42 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 15:15:51 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/10 21:29:01 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ void	lexer_add_token(
 		else
 			token.fd = -1;
 	}
+	if (type == TOKEN_RHD)
+		lexer->heredoc_mode = true;
+	else if (type != TOKEN_WORD && lexer->heredoc_mode)
+		lexer->heredoc_mode = false;
 	if (type == TOKEN_WORD)
 	{
-		token.is_expandable = true;
+		token.is_expandable = !lexer->heredoc_mode;
 		token.is_quoted = is_quote(lexer->source[position]);
 		if (token.is_quoted)
 		{
-			token.is_expandable = lexer->source[position] == '"';
+			token.is_expandable = !lexer->heredoc_mode && lexer->source[position] == '"';
 			token.position += 1;
 			token.length -= 1;
 			if (is_quote(lexer->source[position + token.length]))
