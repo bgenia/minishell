@@ -3,6 +3,7 @@ SRC@src := \
 	src/preparser/merge_adjacent_words.c \
 	src/preparser/split_simple_words.c \
 	src/preparser/preparse.c \
+	src/read_line/read_line.c \
 	src/expander/expand_token.c \
 	src/expander/find_next_var_placeholder.c \
 	src/lexer/lexer_utils/is_redirection_char.c \
@@ -15,11 +16,25 @@ SRC@src := \
 	src/lexer/lexer/lexer_lex_pipe.c \
 	src/lexer/lexer/base/lexer_destroy.c \
 	src/lexer/lexer/base/lexer_create.c \
+	src/lexer/lexer/utils/lexer_set_status.c \
 	src/lexer/lexer/utils/lexer_skip.c \
 	src/lexer/lexer/utils/lexer_add_token.c \
-	src/lexer/lexer/utils/lexer_raise_error.c \
 	src/lexer/lexer/utils/lexer_peek.c \
 	src/lexer/lexer/utils/lexer_is_end.c \
 	src/lexer/lexer/lexer_lex_whitespace.c \
 	src/lexer/lexer/lexer_lex_simple_word.c \
+	src/heredoc/read_heredoc.c \
+	src/parser/parser_parse_redirection.c \
+	src/parser/parser_parse_command.c \
+	src/parser/base/parser_create.c \
+	src/parser/base/parser_destroy.c \
+	src/parser/utils/parser_is_end.c \
+	src/parser/utils/parser_set_status.c \
+	src/parser/utils/parser_peek.c \
+	src/parser/utils/parser_skip.c \
+	src/parser/utils/parser_consume.c \
+	src/parser/utils/parser_match.c \
+	src/parser/parser_parse_word.c \
+	src/parser/parser_parse.c \
+	src/parser/parser_parse_pipeline.c \
 	src/main.c \
