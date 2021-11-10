@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:32:49 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:34:39 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/09 21:36:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 bool	parser_match(t_parser *parser, t_token_type type)
 {
-	if (parser_peek(parser, 0).type == type)
+	if (parser_peek(parser, 0).type & type)
 	{
 		parser_skip(parser, 1);
 		return (true);
