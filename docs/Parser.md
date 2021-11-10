@@ -46,8 +46,7 @@ and_or              = pipeline
 
 # Mandatory part
 
-pipeline            = [ SPACE ] command { [ SPACE ] PIPE command [ SPACE ] }
-command             = { [ SPACE ] redirection | word [ SPACE ] }
-redirection         = ( RL | RR | RRA | RHD ) [ SPACE ] word
-word                = WORD { WORD }
+pipeline            = command { PIPE command }
+command             = ( redirection | WORD ) { redirection | WORD }
+redirection         = ( RL | RR | RRA | RHD ) WORD
 ```
