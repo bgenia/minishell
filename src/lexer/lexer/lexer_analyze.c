@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:05:20 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:59:51 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/10 21:32:20 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ t_lexer_status	lexer_analyze(t_lexer *lexer, char *source)
 	char	current;
 
 	if (!source)
-		return (lexer_raise_error(lexer, LEXER_ERROR_NO_SOURCE));
+		return (lexer_set_status(lexer, LEXER_ERROR_NO_SOURCE));
 	lexer->source = source;
 	lexer->position = 0;
 	lexer->length = ft_strlen(source);
 	current = lexer_peek(lexer, 0);
-	while (!lexer_is_end(lexer) && lexer->status != LEXER_ERROR)
+	while (!lexer_is_end(lexer) && lexer->status == LEXER_OK)
 	{
 		if (ft_isdigit(current) && is_redirection_char(lexer_peek(lexer, 1)))
 			lexer_lex_redirection(lexer);

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 10:36:03 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:58:13 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/10 21:32:36 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	lexer_lex_quoted_word(t_lexer *lexer)
 	if (current == quote)
 		lexer_skip(lexer, 1);
 	else
-		lexer_raise_error(lexer, LEXER_ERROR_UNCLOSED_QUOTE);
+		lexer_set_status(lexer, LEXER_ERROR_UNCLOSED_QUOTE);
 	lexer_add_token(lexer, TOKEN_WORD, position, lexer->position - position);
 }
