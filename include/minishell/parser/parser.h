@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:50:21 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:48:46 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/10 21:44:28 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,28 @@ typedef struct s_parser
     t_token         	*vec_tokens;
 	size_t				position;
 	size_t				length;
+	t_ast				*ast;
 	t_parser_status		status;
 	t_parser_error_info	error_info;
 }	t_parser;
 
 t_parser
-parser_create(void);
+parser_create(t_ast *ast);
 
 void
 parser_destroy(t_parser *parser);
 
-t_ast_pipeline
-*parser_parse(t_parser *parser, t_token *vec_tokens);
+t_parser_status
+parser_parse(t_parser *parser, t_token *vec_tokens);
 
-t_ast_pipeline
-*parser_parse_pipeline(t_parser *parser);
-t_ast_command
-*parser_parse_command(t_parser *parser);
-t_ast_redirection
-*pasrer_parse_redirection(t_parser *parser);
-char
-*parser_parse_word(t_parser *parser);
-
+t_parser_status
+parser_parse_pipeline(t_parser *parser, t_ast_pipeline *result);
+t_parser_status
+parser_parse_command(t_parser *parser, t_ast_command *result);
+t_parser_status
+pasrer_parse_redirection(t_parser *parser, t_ast_redirection *result);
+t_parser_status
+parser_parse_word(t_parser *parser, char **result);
 
 t_parser_status
 parser_set_status(t_parser *parser, t_parser_status status);

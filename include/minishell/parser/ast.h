@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:51:06 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:05:06 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/09 21:02:13 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ typedef struct s_ast_pipeline
 {
 	t_ast_command	*vec_commands;
 }	t_ast_pipeline;
+
+typedef struct s_ast
+{
+	t_ast_pipeline	pipeline;
+}	t_ast;
 
 #endif
