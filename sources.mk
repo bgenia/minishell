@@ -24,17 +24,18 @@ SRC@src := \
 	src/lexer/lexer/lexer_lex_whitespace.c \
 	src/lexer/lexer/lexer_lex_simple_word.c \
 	src/heredoc/read_heredoc.c \
-	src/parser/parser_parse_redirection.c \
-	src/parser/parser_parse_command.c \
-	src/parser/base/parser_create.c \
-	src/parser/base/parser_destroy.c \
-	src/parser/utils/parser_is_end.c \
-	src/parser/utils/parser_set_status.c \
-	src/parser/utils/parser_peek.c \
-	src/parser/utils/parser_skip.c \
-	src/parser/utils/parser_consume.c \
-	src/parser/utils/parser_match.c \
-	src/parser/parser_parse_word.c \
-	src/parser/parser_parse.c \
-	src/parser/parser_parse_pipeline.c \
+	src/parser/parser_utils/create_parser_error_message.c \
+	src/parser/parser/parser_parse_redirection.c \
+	src/parser/parser/parser_parse_command.c \
+	src/parser/parser/base/parser_create.c \
+	src/parser/parser/base/parser_destroy.c \
+	src/parser/parser/utils/parser_is_end.c \
+	src/parser/parser/utils/parser_set_status.c \
+	src/parser/parser/utils/parser_peek.c \
+	src/parser/parser/utils/parser_skip.c \
+	src/parser/parser/utils/parser_consume.c \
+	src/parser/parser/utils/parser_match.c \
+	src/parser/parser/parser_parse_word.c \
+	src/parser/parser/parser_parse.c \
+	src/parser/parser/parser_parse_pipeline.c \
 	src/main.c \
