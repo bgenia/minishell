@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_line.c                                        :+:      :+:    :+:   */
+/*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 04:31:36 by ttanja            #+#    #+#             */
-/*   Updated: 2021/11/13 14:58:02 by ttanja           ###   ########.fr       */
+/*   Created: 2021/11/11 21:56:55 by ttanja            #+#    #+#             */
+/*   Updated: 2021/11/14 11:16:27 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell/reade_line/read_line.h>
-#include <libft/string/string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef EXEC_H
+# define EXEC_H
 
-char	*ft_cat_last_str(char *input)
-{
-	char *str;
+#include <minishell/lexer/token.h>
+#include <minishell/parser/ast.h>
 
-	str = ft_strdup(input);
-	input = read_line();
-	ft_strlcat(str, input, ft_strlen(str) + ft_strlen(input));
-	free(input);
-	return (str);
-}
- 
-char *read_line(void)
-{
-	return(readline("Minishell> "));
-}
+int	start_fork(t_parser *parser, char **env);
+
+
+
+int run_command(t_ast *ast, char **env);
+
+#endif

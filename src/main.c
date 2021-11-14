@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/10 22:33:57 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/13 22:45:59 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 #include <libft/system/env.h>
 
+#include <libft/string/string.h>
+
 #include <minishell/lexer/lexer.h>
 #include <minishell/lexer/token.h>
 
@@ -28,17 +30,27 @@
 
 #include <minishell/preparser/preparser.h>
 
-int	main(int argc, char **argv)
+#include <minishell/exec/exec.h>
+
+#include <minishell/reade_line/read_line.h>
+
+int	main(int argc, char **argv, char **env)
 {
 	t_token	*vec_tokens;
 	t_lexer	lexer;
 	size_t	i;
+	char	*read;
 
+while(42)
+{
+	read = ft_strdup(read_line());
+	
 	(void)argc;
-	ft_printf("ARGV>> %s\n", argv[1]);
+	(void)argv;
+	ft_printf("ARGV>> %s\n", read);
 	vec_tokens = ft_vector_alloc_empty(sizeof(*vec_tokens));
 	lexer = lexer_create(&vec_tokens);
-	if (lexer_analyze(&lexer, argv[1]) != LEXER_OK)
+	if (lexer_analyze(&lexer, read) != LEXER_OK)
 		ft_dprintf(STDERR_FILENO, "Lexer error!\n");
 	lexer_destroy(&lexer);
 	for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
@@ -72,6 +84,7 @@ int	main(int argc, char **argv)
 		ft_printf("> Expected: [%d]\n", parser.error_info.expected);
 		ft_printf("> Got: [%d] %s\n", parser.error_info.got.type, parser.error_info.got.value);
 	}
+	run_command(parser.ast, env);
 	parser_destroy(&parser);
 	for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
 		free(vec_tokens[i].value);
@@ -88,4 +101,5 @@ int	main(int argc, char **argv)
 	}
 	ft_vector_free(ast.pipeline.vec_commands);
 	ft_clearenv();
+}
 }

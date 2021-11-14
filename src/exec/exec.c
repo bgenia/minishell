@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_line.c                                        :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 04:31:36 by ttanja            #+#    #+#             */
-/*   Updated: 2021/11/13 14:58:02 by ttanja           ###   ########.fr       */
+/*   Created: 2021/11/11 22:31:28 by ttanja            #+#    #+#             */
+/*   Updated: 2021/11/14 12:28:10 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <minishell/exec/exec.h>
+#include <minishell/lexer/token.h>
+#include <minishell/parser/ast.h>
 #include <minishell/reade_line/read_line.h>
+#include <unistd.h>
 #include <libft/string/string.h>
+#include <libft/vector/vector.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <stdlib.h>
 
-char	*ft_cat_last_str(char *input)
+int run_command(t_ast *ast, char **env)
 {
-	char *str;
+	pid_t	pidt;
+	int		fd[2];
 
-	str = ft_strdup(input);
-	input = read_line();
-	ft_strlcat(str, input, ft_strlen(str) + ft_strlen(input));
-	free(input);
-	return (str);
-}
- 
-char *read_line(void)
-{
-	return(readline("Minishell> "));
+	pidt = fork();
+	(void)env;
+	if(pidt == 0)
+	{
+		dup2(fd[1], 1);
+		execve(ft_strjoin("/bin/", ast->pipeline.vec_commands->vec_argv[0]), ast->pipeline.vec_commands->vec_argv, env);
+		exit(0);
+	}
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:51:06 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 21:02:13 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/13 20:36:37 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef enum e_ast_redirection_type
 	REDIR_APPEND,
 	REDIR_HEREDOC
 }	t_ast_redirection_type;
-
+ 
 typedef struct s_ast_redirection
 {
 	t_ast_redirection_type	type;
