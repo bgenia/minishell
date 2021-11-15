@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:05:11 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 19:02:43 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/14 19:20:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 # define EXPANDER_H
 
 # include <stddef.h>
-# include <stdbool.h>
+
+# include <minishell/lexer/token.h>
+# include <minishell/parser/ast.h>
 
 // External API
 
 void
 expand_env_variables(char **source);
+
+void
+expand_tokens(t_token *vec_tokens);
+
+void
+expand_executables(t_ast *ast);
 
 // Internal API
 
@@ -31,5 +39,8 @@ typedef struct s_var_placeholder
 
 bool
 find_next_var_placeholder(char *source, t_var_placeholder *result);
+
+char
+*get_executable(char *path);
 
 #endif
