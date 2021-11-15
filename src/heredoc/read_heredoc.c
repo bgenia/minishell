@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   read_heredoc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2021/11/01 13:52:36 by ttanja           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:40:30 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell/reade_line/read_line.h>
-#include <libft/string/string.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#include <libft/string/string.h>
 #include <libft/memory/memory.h>
+
+#include <readline/readline.h>
 
 char	*get_name_heredoc(char *str)
 {
@@ -26,9 +28,9 @@ char	*get_name_heredoc(char *str)
 	while(str[i] && str[i - 1] != '<' && str[i] != '<')
 		i++;
 	j = i;
-while(str[j] && str[j] != '\n')
+	while(str[j] && str[j] != '\n')
 		j++;
-	name = calloc(sizeof(char), j - i + 1);
+	name = ft_calloc(sizeof(char), j - i + 1);
 	ft_strlcpy(name, &str[i + 2], j - i );
 	return(name);
 }
