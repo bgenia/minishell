@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:51:06 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 21:02:13 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/14 18:49:39 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_ast_redirection
 {
 	t_ast_redirection_type	type;
 	int						fd;
-	char					*source;
+	char					*file;
 }	t_ast_redirection;
 
 typedef struct s_ast_command
@@ -43,5 +43,8 @@ typedef struct s_ast
 {
 	t_ast_pipeline	pipeline;
 }	t_ast;
+
+void
+ast_destroy(t_ast *ast);
 
 #endif
