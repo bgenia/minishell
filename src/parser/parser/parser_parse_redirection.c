@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:32:19 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 21:42:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:31:42 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_parser_status	pasrer_parse_redirection(
 	redirection = parser_peek(parser, -1);
 	if (parser_parse_word(parser, &source) != PARSER_OK)
 		return (parser->status);
-	result->source = source;
+	result->file = source;
 	result->fd = redirection.fd;
 	if (redirection.type == TOKEN_RHD)
 		result->type = REDIR_HEREDOC;
