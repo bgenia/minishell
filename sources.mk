@@ -1,11 +1,18 @@
 SRC@src := \
+	src/main_.c \
 	src/preparser/remove_whitespaces.c \
 	src/preparser/merge_adjacent_words.c \
 	src/preparser/split_simple_words.c \
 	src/preparser/preparse.c \
-	src/read_line/read_line.c \
-	src/expander/expand_token.c \
+	src/repl/parse_command.c \
+	src/repl/signals/handle_signals.c \
+	src/repl/signals/register_signal_handlers.c \
+	src/repl/g_repl_state.c \
 	src/expander/find_next_var_placeholder.c \
+	src/expander/expand_executables.c \
+	src/expander/get_executable.c \
+	src/expander/expand_tokens.c \
+	src/expander/expand_env_variables.c \
 	src/lexer/lexer_utils/is_redirection_char.c \
 	src/lexer/lexer_utils/is_word_delimiter.c \
 	src/lexer/lexer_utils/is_quote.c \
@@ -23,7 +30,11 @@ SRC@src := \
 	src/lexer/lexer/utils/lexer_is_end.c \
 	src/lexer/lexer/lexer_lex_whitespace.c \
 	src/lexer/lexer/lexer_lex_simple_word.c \
+	src/builtins/is_builtin.c \
+	src/builtins/cd.c \
+	src/builtins/exec_builtin.c \
 	src/heredoc/read_heredoc.c \
+	src/parser/ast/ast_destroy.c \
 	src/parser/parser_utils/create_parser_error_message.c \
 	src/parser/parser/parser_parse_redirection.c \
 	src/parser/parser/parser_parse_command.c \
