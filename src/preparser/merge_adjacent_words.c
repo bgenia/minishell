@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 19:16:22 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/01 12:32:36 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/16 19:30:58 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	merge_adjacent_words(t_token **token_vec_ptr)
 	{
 		prev = &(*token_vec_ptr)[i - 1];
 		current = &(*token_vec_ptr)[i];
-		if (prev->type == TOKEN_WORD && current->type == TOKEN_WORD
-			&& (prev->is_quoted ^ current->is_quoted))
+		if (prev->type == TOKEN_WORD && current->type == TOKEN_WORD)
 		{
 			_merge_tokens(prev, current);
 			free(current->value);

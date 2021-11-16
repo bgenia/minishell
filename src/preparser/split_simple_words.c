@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 19:16:22 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/01 12:28:15 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:38:43 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,29 @@ static size_t	_insert_new_tokens(
 {
 	size_t	word_count;
 	size_t	j;
+	size_t	k;
 	t_token	*tokens;
 
 	word_count = ft_arrlen(words, sizeof(*words));
-	tokens = ft_vector_insert_many_at(token_vec_ptr, i, word_count);
+	tokens = ft_vector_insert_many_at(token_vec_ptr, i, word_count * 2 - 1);
 	j = 0;
-	while (j < word_count)
+	k = 0;
+	while (j < word_count * 2 - 1)
 	{
 		tokens[j] = src_token;
-		tokens[j].value = words[j];
+		if (j % 2 == 0)
+		{
+			tokens[j].value = words[k++];
+		}
+		else
+		{
+			tokens[j].type = TOKEN_SPACE;
+			tokens[j].value = NULL;
+			tokens[j].length = 0;
+		}
 		j++;
 	}
-	return (word_count);
+	return (j);
 }
 
 void	split_simple_words(t_token **token_vec_ptr)
