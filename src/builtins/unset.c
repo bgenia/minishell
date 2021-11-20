@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_builtin.c                                       :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 19:43:34 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/20 17:58:53 by ttanja           ###   ########.fr       */
+/*   Created: 2021/11/20 09:06:20 by ttanja            #+#    #+#             */
+/*   Updated: 2021/11/20 09:07:34 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <unistd.h>
 
-#include <libft/string/string.h>
+#include <libft/system/env.h>
 
-bool	is_builtin(char *name)
+int	builtin_unset(int argc, char **argv)
 {
-	if (ft_streq(name, "cd"))
-		return (true);
-	if (ft_streq(name, "export"))
-		return (true);
-	if (ft_streq(name, "unset"))
-		return (true);
-	if (ft_streq(name, "exit"))
-		return (true);
-	return (false);
+	(void)argc;
+	ft_unsetenv(argv[1]);
+	return (0);
 }

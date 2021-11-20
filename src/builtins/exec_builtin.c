@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:38:11 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/20 08:34:33 by ttanja           ###   ########.fr       */
+/*   Updated: 2021/11/20 09:08:53 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	exec_builtin(char *name, char **argv)
 		builtin_cd(ft_arrlen(argv, sizeof(*argv)), argv);
 	if (ft_streq(name, "export"))
 		builtin_export(ft_arrlen(argv, sizeof(*argv)), argv);
+	if (ft_streq(name, "unset"))
+		builtin_unset(ft_arrlen(argv, sizeof(*argv)), argv);
 	if (ft_streq(name, "exit"))
 		builtin_exit(ft_arrlen(argv, sizeof(*argv)), argv);
 	return (-1);
