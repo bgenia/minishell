@@ -1,5 +1,4 @@
 SRC@src := \
-	src/main_.c \
 	src/preparser/remove_whitespaces.c \
 	src/preparser/merge_adjacent_words.c \
 	src/preparser/split_simple_words.c \
@@ -33,6 +32,9 @@ SRC@src := \
 	src/builtins/is_builtin.c \
 	src/builtins/cd.c \
 	src/builtins/exec_builtin.c \
+	src/builtins/exit.c \
+	src/builtins/unset.c \
+	src/builtins/export.c \
 	src/heredoc/read_heredoc.c \
 	src/parser/ast/ast_destroy.c \
 	src/parser/parser_utils/create_parser_error_message.c \
