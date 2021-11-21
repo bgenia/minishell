@@ -3,48 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2021/11/20 13:27:48 by ttanja           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:58:56 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/types.h>
-#include <libft/string/string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+
+#include <libft/types.h>
+#include <libft/string/string.h>
+
 #include <minishell/builtins.h>
 
-int	is_number(char *str)
+intmax_t	is_number(char *str)
 {
-	int	result;
-	int	i;
-	int	strlen;
+	intmax_t	result;
+	size_t		length;
 
-	result = -1;
-	i = 0;
-	strlen = ft_strlen(str);
-	while (i < strlen)
-	{
-		if (!ft_isdigit(str[i]))
-			return (-1);
-		i++;
-	}
-	if (str)
-		result = ft_atoi(str, NULL);
-	return(result);
+	result = ft_atoi(str, &length);
+	if (length != ft_strlen(str))
+		return (-1);
+	return (result);
 }
 
 int	builtin_exit(int argc, char **argv)
 {
+	intmax_t	code;
+
 	if (argc == 1)
 		exit(0);
-	if (argv[1] && is_number(argv[1]) < 0)
+	code = is_number(argv[1]);
+	if (code < 0 || code > INT_MAX)
 	{
 		printf("exit: %s: numeric argument required\n", argv[1]);
 		exit(255);
 	}
-	exit ((char)is_number(argv[1]));
+	exit((char)code);
 	return (0);
 }
