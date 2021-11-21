@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 18:38:37 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/21 18:47:43 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_repl_state
 {
-	pid_t	child_process_id;
+	pid_t	*vec_children;
 }	t_repl_state;
 
 extern t_repl_state g_repl_state;

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:00 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 18:55:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:12:52 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
+#include <libft/vector/vector.h>
+
 #include <minishell/repl/repl.h>
 
 void	handle_signals(int signal)
@@ -24,15 +26,12 @@ void	handle_signals(int signal)
 	if (signal == SIGINT)
 	{
 		ft_printf("\n");
-		if (g_repl_state.child_process_id != -1)
-			kill(g_repl_state.child_process_id, SIGINT);
 		rl_on_new_line();
-		if (g_repl_state.child_process_id == -1)
+		if (g_repl_state.vec_children)
 			rl_redisplay();
 	}
-	if (signal == SIGQUIT && g_repl_state.child_process_id != -1)
+	if (signal == SIGQUIT && g_repl_state.vec_children)
 	{
-		kill(g_repl_state.child_process_id, SIGQUIT);
 		ft_printf("Quit\n");
 		rl_on_new_line();
 	}
