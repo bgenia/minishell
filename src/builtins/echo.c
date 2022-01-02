@@ -6,17 +6,30 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:06:40 by ttanja            #+#    #+#             */
-/*   Updated: 2022/01/02 20:18:40 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/02 20:57:28 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <libft/io/printf.h>
 #include <libft/string/string.h>
 
 int	builtin_echo(int argc, char **argv)
 {
+	int	flag;
+	int i;
+	
+	flag = 0;
+	i = 1;
 	if (argc > 3 && ft_strcmp(argv[1], "-n"))
-		ft_printf("%s", argv[2]);
-	ft_printf("%s/n", argv[2]);
+		flag++;
+	while (argv[i])
+	{
+		ft_printf("%s", argv[i]);
+		if ((argv[i + 1]))
+			ft_printf("%s", " ");
+	}
+	if (!flag)
+		write(1, "\n", 1);
 	return (0);
 }
