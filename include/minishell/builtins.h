@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/01/02 19:49:17 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/02 21:40:34 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ builtin_echo(int argc, char **argv);
 
 int
 builtin_pwd(int argc, char **argv);
+
+int
+builtin_env(int argc, char **argv);
 
 #endif
