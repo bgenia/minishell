@@ -6,14 +6,15 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/01/02 22:12:30 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/07 22:01:58 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/io/printf.h>
 #include <libft/system/env.h>
 
-int	builtin_env(int argc, char **argv)
+
+int	builtin_env(int argc, char **argv, int fd)
 {
 	int	i;
 
@@ -21,6 +22,6 @@ int	builtin_env(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	while (environ[i])
-		ft_printf("%s\n", environ[i++]);
+		ft_putstr_fd(fd, environ[i++]);
 	return (0);
 }
