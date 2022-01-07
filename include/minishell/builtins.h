@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/01/02 21:40:34 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/07 12:29:59 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 
 int
-exec_builtin(char *name, char **argv);
+exec_builtin(char *name, char **argv, int fd);
 
 bool
 is_builtin(char *name);
@@ -34,12 +34,12 @@ int
 builtin_exit(int argc, char **argv);
 
 int
-builtin_echo(int argc, char **argv);
+builtin_echo(int argc, char **argv, int fd);
 
 int
 builtin_pwd(int argc, char **argv);
 
 int
-builtin_env(int argc, char **argv);
+builtin_env(int argc, char **argv, int fd);
 
 #endif
