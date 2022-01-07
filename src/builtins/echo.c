@@ -6,12 +6,14 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:06:40 by ttanja            #+#    #+#             */
-/*   Updated: 2022/01/07 22:02:25 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/07 23:47:02 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <libft/io/printf.h>
+#include <libft/string/string.h>
+
 
 int	builtin_echo(int argc, char **argv, int fd)
 {

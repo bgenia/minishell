@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/01/07 22:01:58 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/01/07 23:45:02 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	builtin_env(int argc, char **argv, int fd)
 	(void)argc;
 	(void)argv;
 	while (environ[i])
-		ft_putstr_fd(fd, environ[i++]);
+		ft_dprintf(fd, environ[i++]);
 	return (0);
 }
