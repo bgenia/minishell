@@ -34,8 +34,11 @@ SRC@src := \
 	src/builtins/exec_builtin.c \
 	src/builtins/exit.c \
 	src/builtins/unset.c \
+	src/builtins/echo.c \
 	src/builtins/export.c \
-	src/heredoc/read_heredoc.c \
+	src/builtins/pwd.c \
+	src/builtins/env.c \
+	src/redirects/read_heredoc.c \
 	src/parser/ast/ast_destroy.c \
 	src/parser/parser_utils/create_parser_error_message.c \
 	src/parser/parser/parser_parse_redirection.c \
