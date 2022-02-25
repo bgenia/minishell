@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/21 19:24:54 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/02/26 01:15:16 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+
+#include <minishell/redirects/heredoc.h>
 
 int	main(int argc, char **argv)
 {
@@ -81,7 +83,7 @@ int	main(int argc, char **argv)
 			{
 				if (is_builtin(ast.pipeline.vec_commands[i].vec_argv[0]))
 				{
-					exec_builtin(ast.pipeline.vec_commands[i].vec_argv[0], ast.pipeline.vec_commands[i].vec_argv);
+					exec_builtin(ast.pipeline.vec_commands[i].vec_argv[0], ast.pipeline.vec_commands[i].vec_argv, STDOUT_FILENO);
 					continue ;
 				}
 
@@ -114,10 +116,16 @@ int	main(int argc, char **argv)
 						else if (redirection->type == REDIR_INPUT)
 							file = open(redirection->file, O_RDONLY);
 						else
-							file = redirection->fd;
+						{
+							// Сохраняем перезаписанный STDIN и меняем его на стандартный, иначе хирдок начнёт читать из пайпа/файла
+							int __stdin = dup(STDIN_FILENO);
 
-						if (redirection->type == REDIR_HEREDOC)
-							ft_dprintf(redirection->fd, "%s", redirection->file);
+							dup2(_stdin, STDIN_FILENO);
+							file = read_heredoc(redirection->file);
+							dup2(__stdin, STDIN_FILENO);
+						}
+						// if (redirection->type == REDIR_HEREDOC)
+						// 	ft_dprintf(redirection->fd, "%s", redirection->file);
 
 						dup2(file, redirection->fd);
 					}
