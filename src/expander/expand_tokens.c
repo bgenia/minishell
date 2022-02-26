@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:39:30 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 18:43:01 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/02/27 02:00:54 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ void	expand_tokens(t_token *vec_tokens)
 	i = 0;
 	while (i < ft_vector_get_size(vec_tokens))
 	{
-		expand_env_variables(&vec_tokens[i].value);
-		vec_tokens[i].length = ft_strlen(vec_tokens[i].value);
+		if (vec_tokens[i].is_expandable)
+		{
+			expand_env_variables(&vec_tokens[i].value);
+			vec_tokens[i].length = ft_strlen(vec_tokens[i].value);
+		}
 		i++;
 	}
 }
