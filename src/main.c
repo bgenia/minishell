@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2022/02/26 01:15:16 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/02/26 01:46:15 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,26 @@ int	main(int argc, char **argv)
 					ft_printf(" &%d<->'%s'", command.vec_redirections[i].fd, command.vec_redirections[i].file);
 				ft_printf("\n");
 			}
+
+			int	*vec_heredoc_fds = ft_vector_alloc_empty(sizeof(*vec_heredoc_fds));
+
+			for (size_t i = 0; i < ft_vector_get_size(ast.pipeline.vec_commands); i++)
+			{
+				t_ast_command *command = &ast.pipeline.vec_commands[i];
+
+				for (size_t j = 0; j < ft_vector_get_size(command->vec_redirections); j++)
+				{
+					t_ast_redirection *redirection = &command->vec_redirections[j];
+
+					if (redirection->type != REDIR_HEREDOC)
+						continue ;
+
+					*(int *)ft_vector_push_back(&vec_heredoc_fds) = read_heredoc(redirection->file);
+				}
+			}
+
+			int heredoc_index = 0;
+
 			for (size_t i = 0; i < ft_vector_get_size(ast.pipeline.vec_commands); i++)
 			{
 				if (is_builtin(ast.pipeline.vec_commands[i].vec_argv[0]))
@@ -116,16 +136,7 @@ int	main(int argc, char **argv)
 						else if (redirection->type == REDIR_INPUT)
 							file = open(redirection->file, O_RDONLY);
 						else
-						{
-							// Сохраняем перезаписанный STDIN и меняем его на стандартный, иначе хирдок начнёт читать из пайпа/файла
-							int __stdin = dup(STDIN_FILENO);
-
-							dup2(_stdin, STDIN_FILENO);
-							file = read_heredoc(redirection->file);
-							dup2(__stdin, STDIN_FILENO);
-						}
-						// if (redirection->type == REDIR_HEREDOC)
-						// 	ft_dprintf(redirection->fd, "%s", redirection->file);
+							file = vec_heredoc_fds[heredoc_index++];
 
 						dup2(file, redirection->fd);
 					}
@@ -138,6 +149,16 @@ int	main(int argc, char **argv)
 				else
 				{
 					*(pid_t*)ft_vector_push_back(&g_repl_state.vec_children) = current_child;
+
+					for (size_t j = 0; j < ft_vector_get_size(ast.pipeline.vec_commands[i].vec_redirections); j++)
+					{
+						t_ast_redirection	*redirection;
+
+						redirection = &ast.pipeline.vec_commands[i].vec_redirections[j];
+
+						if (redirection->type == REDIR_HEREDOC)
+							heredoc_index++;
+					}
 				}
 
 				if (i < ft_vector_get_size(ast.pipeline.vec_commands) - 1)
