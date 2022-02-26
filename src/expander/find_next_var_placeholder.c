@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:11:02 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 18:45:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/02/27 01:42:56 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static bool	_is_placeholder_delimiter(char c)
 {
-	return (ft_isspace(c) || c == '$');
+	return (ft_isspace(c) || c == '$' || c == '\'');
 }
 
 bool	find_next_var_placeholder(char *source, t_var_placeholder *result)
