@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2022/02/26 01:46:15 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/02/26 20:48:41 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ int	main(int argc, char **argv)
 						dup2(_pipe[1], STDOUT_FILENO);
 					}
 					execve(ast.pipeline.vec_commands[i].vec_argv[0], ast.pipeline.vec_commands[i].vec_argv, environ);
+
+					// Здесь нужно обработать ошибку если команда не смогла выполниться
+					exit(-1);
 				}
 				else
 				{
@@ -172,15 +175,19 @@ int	main(int argc, char **argv)
 			// 	waitpid(g_repl_state.vec_children[i], NULL, WNOHANG);
 			int status;
 
-			waitpid(-1, &status, 0);
+			int wpid;
+
+			while ((wpid = waitpid(-1, &status, 0)) > 0) ;
+			// waitpid(-1, &status, 0);
 
 			dup2(_stdin, STDIN_FILENO);
 			dup2(_stdout, STDOUT_FILENO);
 
+			// if ()
 			ft_printf("Exit status: %d\n", WEXITSTATUS(status));
 			ft_vector_free(g_repl_state.vec_children);
 			g_repl_state.vec_children = NULL;
-			rl_on_new_line();
+			// rl_on_new_line();
 		}
 		else
 		{
