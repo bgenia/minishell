@@ -6,13 +6,13 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:22:07 by bgenia            #+#    #+#             */
-/*   Updated: 2022/02/25 13:45:32 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/02/27 14:19:14 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEREDOC_H
 # define HEREDOC_H
 
-int	read_heredoc(char *name);
+int	read_heredoc(char *name, int *index);
 
 #endif
