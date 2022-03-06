@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 18:53:21 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/04 21:28:52 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,13 @@ t_command_status	parse_command(char *source, t_ast *result)
 	if (parser_parse(&parser, vec_tokens) != PARSER_OK)
 	{
 		parser_destroy(&parser);
+		for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
+			free(vec_tokens[i].value);
 		ft_vector_free(vec_tokens);
 		return (COMMAND_SYNTAX_ERROR);
 	}
+	for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
+		free(vec_tokens[i].value);
+	ft_vector_free(vec_tokens);
 	return (COMMAND_OK);
 }
