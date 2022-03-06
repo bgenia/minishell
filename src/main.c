@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2022/02/26 20:48:41 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/06 19:51:21 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,32 @@
 
 #include <minishell/redirects/heredoc.h>
 
-int	main(int argc, char **argv)
+#include <signal.h>
+#include <stddef.h>
+
+// void	handle_sigpipe(int sig)
+// {
+// 	if (sig == SIGPIPE)
+// 	{
+// 		ft_dprintf(2, "BRUH_SIGPIPE!\n");
+// 	}
+// }
+
+// void	register_sigpipe(void)
+// {
+// 	struct sigaction	signal_handler;
+
+// 	signal_handler = (struct sigaction){0};
+// 	signal_handler.sa_handler = handle_sigpipe;
+// 	sigaction(SIGPIPE, &signal_handler, NULL);
+// }
+
+
+int	main(void)
 {
 	char	*line;
 	t_ast	ast;
 
-	(void)argc, (void)argv;
 	rl_catch_signals = false;
 	register_signal_handlers();
 	while (true)
@@ -48,6 +68,7 @@ int	main(int argc, char **argv)
 		line = readline("\001" TERM_F_BLUE "\002" "msh> " "\001" TERM_RESET "\002");
 		if (line == NULL)
 		{
+			// FIXME bruh
 			free(line);
 			break ;
 		}
@@ -61,6 +82,7 @@ int	main(int argc, char **argv)
 			int		_pipe[2];
 			int		_stdin;
 			int		_stdout;
+
 
 			_stdin = dup(STDIN_FILENO);
 			_stdout = dup(STDOUT_FILENO);
@@ -114,6 +136,8 @@ int	main(int argc, char **argv)
 
 				pid_t current_child = fork();
 
+				// signal(SIGPIPE, handle_sigpipe);
+
 				if (current_child == 0)
 				{
 					for (size_t j = 0; j < ft_vector_get_size(ast.pipeline.vec_commands[i].vec_redirections); j++)
@@ -142,42 +166,64 @@ int	main(int argc, char **argv)
 					}
 					if (i < ft_vector_get_size(ast.pipeline.vec_commands) - 1)
 					{
+						close(_pipe[0]);
 						dup2(_pipe[1], STDOUT_FILENO);
 					}
+
+					// register_sigpipe();
+					// signal(SIGINT, SIG_IGN);
+					// FIXME access()
 					execve(ast.pipeline.vec_commands[i].vec_argv[0], ast.pipeline.vec_commands[i].vec_argv, environ);
 
+					// close(_pipe[1]);
+					// close(_pipe[0]);
 					// Здесь нужно обработать ошибку если команда не смогла выполниться
 					exit(-1);
 				}
-				else
+
+
+				*(pid_t*)ft_vector_push_back(&g_repl_state.vec_children) = current_child;
+
+				for (size_t j = 0; j < ft_vector_get_size(ast.pipeline.vec_commands[i].vec_redirections); j++)
 				{
-					*(pid_t*)ft_vector_push_back(&g_repl_state.vec_children) = current_child;
+					t_ast_redirection	*redirection;
 
-					for (size_t j = 0; j < ft_vector_get_size(ast.pipeline.vec_commands[i].vec_redirections); j++)
-					{
-						t_ast_redirection	*redirection;
+					redirection = &ast.pipeline.vec_commands[i].vec_redirections[j];
 
-						redirection = &ast.pipeline.vec_commands[i].vec_redirections[j];
-
-						if (redirection->type == REDIR_HEREDOC)
-							heredoc_index++;
-					}
+					if (redirection->type == REDIR_HEREDOC)
+						heredoc_index++;
 				}
 
 				if (i < ft_vector_get_size(ast.pipeline.vec_commands) - 1)
 				{
 					dup2(_pipe[0], STDIN_FILENO);
 					close(_pipe[1]);
+					close(_pipe[0]);
 				}
+				else
+				{
+					// close(_pipe[0]);
+					// close(_pipe[1]);
+					close(STDIN_FILENO);
+				}
+
+				ft_dprintf(2, "kek\n");
 			}
 
 			// for (size_t i = 0; i < ft_vector_get_size(g_repl_state.vec_children); i++)
 			// 	waitpid(g_repl_state.vec_children[i], NULL, WNOHANG);
 			int status;
 
-			int wpid;
+			// int wpid;
 
-			while ((wpid = waitpid(-1, &status, 0)) > 0) ;
+			// while ((wpid = waitpid(-1, &status, 0)) > 0) ;
+
+			for (size_t i = 0; i < ft_vector_get_size(g_repl_state.vec_children); i++)
+			{
+				waitpid(g_repl_state.vec_children[i], &status, 0);
+			}
+
+
 			// waitpid(-1, &status, 0);
 
 			dup2(_stdin, STDIN_FILENO);
@@ -186,6 +232,7 @@ int	main(int argc, char **argv)
 			// if ()
 			ft_printf("Exit status: %d\n", WEXITSTATUS(status));
 			ft_vector_free(g_repl_state.vec_children);
+			ft_vector_free(vec_heredoc_fds);
 			g_repl_state.vec_children = NULL;
 			// rl_on_new_line();
 		}
