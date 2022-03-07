@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/01/07 23:45:02 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/07 15:40:56 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	builtin_env(int argc, char **argv, int fd)
 {
 	int	i;
 
+	if (argc > 1)
+		{
+			ft_printf("env: %s: No such file or directory", argv[1]);
+			return (127);
+		}
 	i = 0;
 	(void)argc;
 	(void)argv;
