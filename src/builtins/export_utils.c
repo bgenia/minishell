@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:03:29 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/07 13:09:01 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/07 13:11:09 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	check_valid(char *str)
 		check = 0;
 		while (str[++i])
 		{
-			if(ft_isalpha(str[i]) || str[i] == '_' || ft_isdigit(str[i]))
+			if(ft_isalpha(str[i]) || str[i] == '_' || ft_isdigit(str[i])
+				|| str[i] == '=')
 				continue;
 			return(1);
 		}
