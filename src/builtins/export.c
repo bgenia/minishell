@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 11:19:50 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/07 12:56:44 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <libft/memory/memory.h>
 #include <libft/system/env.h>
 #include <libft/io/printf.h>
+#include <minishell/builtins.h>
 
 void	sort_string(char **cp_env, int count)
 {
@@ -67,6 +68,11 @@ int	builtin_export(int argc, char **argv)
 		print_sort_env();
 	while (--argc > 0)
 	{
+		if (check_valid(argv[argc]))
+		{
+			ft_printf("%s: not a valid identifier\n", argv[argc]);
+			return(1);
+		}
 		ft_putenv(argv[argc]);
 	}
 	return (0);
