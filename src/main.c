@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 16:32:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:52:23 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,8 +207,6 @@ int	main(void)
 					// close(_pipe[1]);
 					close(STDIN_FILENO);
 				}
-
-				ft_dprintf(2, "kek\n");
 			}
 
 			// for (size_t i = 0; i < ft_vector_get_size(g_repl_state.vec_children); i++)
