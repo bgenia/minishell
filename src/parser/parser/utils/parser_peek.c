@@ -6,10 +6,9 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:25:16 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:30:16 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 15:33:16 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <minishell/parser/parser.h>
 

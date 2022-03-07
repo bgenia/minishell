@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:26:24 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/12 18:29:49 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 15:31:57 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <minishell/parser/parser_utils.h>
 #include <minishell/lexer/token.h>
 
-const static char *g_token_types[] = {
+const static char	*g_token_types[] = {
 [TOKEN_RL] = "<",
 [TOKEN_RR] = ">",
 [TOKEN_RHD] = "<<",

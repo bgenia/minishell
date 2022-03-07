@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:46:30 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 18:49:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 15:33:02 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ast_destroy(t_ast *ast)
 		}
 		j = 0;
 		while (j < ft_vector_get_size(
-			ast->pipeline.vec_commands[i].vec_redirections))
+				ast->pipeline.vec_commands[i].vec_redirections))
 		{
 			free(ast->pipeline.vec_commands[i].vec_redirections[j].file);
 			j++;
