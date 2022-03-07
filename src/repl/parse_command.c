@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 16:05:13 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:44:29 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <libft/vector/vector.h>
 #include <libft/system/env.h>
 #include <libft/terminal/termdefs.h>
+#include <libft/string/string.h>
 
 #include <minishell/lexer/lexer.h>
 #include <minishell/lexer/token.h>
@@ -52,15 +53,16 @@ static void
 	}
 	ft_dprintf(STDERR_FILENO,
 		"minishell: syntax error near unclosed quote\n%s\n",
-		lexer->source
-		);
+		lexer->source);
 	i = 0;
-	while (i < lexer->position - 1)
+	while (i < lexer->position)
 	{
 		ft_dprintf(STDERR_FILENO, " ");
 		i++;
 	}
-	ft_dprintf(STDERR_FILENO, TERM_F_RED "^--- here\n" TERM_RESET);
+	ft_dprintf(STDERR_FILENO,
+		TERM_F_RED "^--- expected %c\n" TERM_RESET,
+		lexer->error_info.expected_quote);
 }
 
 static void
@@ -68,21 +70,24 @@ static void
 {
 	size_t	i;
 
+	if (parser->error_info.got.type == TOKEN_EOF)
+	{
+		parser->error_info.got.value = "EOF";
+		parser->error_info.got.position = ft_strlen(source);
+	}
 	ft_dprintf(STDERR_FILENO,
-		"minishell: syntax error near unexpected token %s\n%s\n",
+		"minishell: syntax error near unexpected token '%s'\n%s\n",
 		parser->error_info.got.value,
-		source
-		);
+		source);
 	i = 0;
-	while (i < parser->error_info.got.position - 1)
+	while (i < parser->error_info.got.position)
 	{
 		ft_dprintf(STDERR_FILENO, " ");
 		i++;
 	}
 	ft_dprintf(STDERR_FILENO,
-		TERM_F_RED "^--- here\n" TERM_RESET "expected %S\n",
-		stringify_expected_tokens(parser->error_info.expected)
-		);
+		TERM_F_RED "^--- expected %S\n" TERM_RESET,
+		stringify_expected_tokens(parser->error_info.expected));
 }
 
 t_command_status
