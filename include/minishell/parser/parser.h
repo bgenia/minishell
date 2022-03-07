@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:50:21 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/10 21:44:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:21:15 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_parser_error_info
 
 typedef struct s_parser
 {
-    t_token         	*vec_tokens;
+	t_token				*vec_tokens;
 	size_t				position;
 	size_t				length;
 	t_ast				*ast;
