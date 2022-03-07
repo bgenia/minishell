@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   g_repl_state.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 18:22:38 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/21 18:47:59 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/07 14:32:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdbool.h>
+#include <stdio.h>
 
-#include <minishell/repl/repl.h>
+#include <minishell/repl/signals.h>
 
-t_repl_state	g_repl_state = (t_repl_state){
-	.vec_children = NULL
-};
+#include <libft/system/env.h>
+
+#include <readline/readline.h>
+
+int
+	main(void)
+{
+	rl_catch_signals = false;
+	register_signal_handlers();
+	repl_init();
+	repl_start();
+	ft_clearenv();
+	return (0);
+}
