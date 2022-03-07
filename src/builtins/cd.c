@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 15:47:08 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:52:50 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	builtin_cd(int argc, char **argv)
 	char	*dir;
 	char	buffer[1024];
 
- 	dir = NULL;
+	dir = NULL;
 	if (argc == 1)
 		dir = ft_getenv("HOME");
 	else
@@ -32,6 +32,6 @@ int	builtin_cd(int argc, char **argv)
 	}
 	if (getcwd(buffer, 1024))
 		ft_setenv("OLDPWD", ft_getenv("PWD"), true);
-		ft_setenv("PWD", buffer, true);
+	ft_setenv("PWD", buffer, true);
 	return (0);
 }
