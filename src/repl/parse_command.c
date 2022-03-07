@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/04 21:28:52 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:05:13 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,66 @@
 
 #include <minishell/repl/repl.h>
 
-t_command_status	parse_command(char *source, t_ast *result)
+// FIXME This file is kinda overloaded
+
+static void
+	_free_tokens(t_token *vec_tokens)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_vector_get_size(vec_tokens))
+		free(vec_tokens[i++].value);
+	ft_vector_free(vec_tokens);
+}
+
+static void
+	_print_lexer_error(t_lexer *lexer)
+{
+	size_t	i;
+
+	if (lexer->status != LEXER_ERROR_UNCLOSED_QUOTE)
+	{
+		ft_dprintf(STDERR_FILENO, "minishell: unexpected lexer error");
+		return ;
+	}
+	ft_dprintf(STDERR_FILENO,
+		"minishell: syntax error near unclosed quote\n%s\n",
+		lexer->source
+		);
+	i = 0;
+	while (i < lexer->position - 1)
+	{
+		ft_dprintf(STDERR_FILENO, " ");
+		i++;
+	}
+	ft_dprintf(STDERR_FILENO, TERM_F_RED "^--- here\n" TERM_RESET);
+}
+
+static void
+	_print_parser_error(t_parser *parser, char *source)
+{
+	size_t	i;
+
+	ft_dprintf(STDERR_FILENO,
+		"minishell: syntax error near unexpected token %s\n%s\n",
+		parser->error_info.got.value,
+		source
+		);
+	i = 0;
+	while (i < parser->error_info.got.position - 1)
+	{
+		ft_dprintf(STDERR_FILENO, " ");
+		i++;
+	}
+	ft_dprintf(STDERR_FILENO,
+		TERM_F_RED "^--- here\n" TERM_RESET "expected %S\n",
+		stringify_expected_tokens(parser->error_info.expected)
+		);
+}
+
+t_command_status
+	parse_command(char *source, t_ast *result)
 {
 	t_token		*vec_tokens;
 	t_lexer		lexer;
@@ -37,24 +96,19 @@ t_command_status	parse_command(char *source, t_ast *result)
 	lexer = lexer_create(&vec_tokens);
 	if (lexer_analyze(&lexer, source) != LEXER_OK)
 	{
-		lexer_destroy(&lexer);
-		ft_vector_free(vec_tokens);
+		_print_lexer_error(&lexer);
+		_free_tokens(vec_tokens);
 		return (COMMAND_LEXICAL_ERROR);
 	}
-	lexer_destroy(&lexer);
 	expand_tokens(vec_tokens);
 	preparse(&vec_tokens);
 	parser = parser_create(result);
 	if (parser_parse(&parser, vec_tokens) != PARSER_OK)
 	{
-		parser_destroy(&parser);
-		for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
-			free(vec_tokens[i].value);
-		ft_vector_free(vec_tokens);
+		_print_parser_error(&parser, source);
+		_free_tokens(vec_tokens);
 		return (COMMAND_SYNTAX_ERROR);
 	}
-	for (size_t i = 0; i < ft_vector_get_size(vec_tokens); i++)
-		free(vec_tokens[i].value);
-	ft_vector_free(vec_tokens);
+	_free_tokens(vec_tokens);
 	return (COMMAND_OK);
 }
