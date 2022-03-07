@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_parser_error_message.c                      :+:      :+:    :+:   */
+/*   stringify_expected_tokens.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:26:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 15:31:57 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:03:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,21 @@ const static char	*g_token_types[] = {
 [TOKEN_EOF] = "an EOF"
 };
 
-char	*create_parser_error_message(t_parser_error_info *error)
+char
+	*stringify_expected_tokens(t_token_type expected)
 {
-	char	*expected;
-	char	*got;
+	char	*result;
 	int		i;
 
-	expected = NULL;
+	result = NULL;
 	i = TOKEN_PIPE;
 	while (i <= TOKEN_EOF)
 	{
-		if (!expected && error->expected & i)
-			expected = ft_strdup(g_token_types[i]);
-		else if (expected && error->expected & i)
-			expected = ft_aformat("%S or %s", expected, g_token_types[i]);
+		if (!result && expected & i)
+			result = ft_strdup(g_token_types[i]);
+		else if (result && expected & i)
+			result = ft_aformat("%S or %s", result, g_token_types[i]);
 		i *= 2;
 	}
-	if (error->got.value)
-		got = ft_aformat("'%s'", error->got.value);
-	else
-		got = ft_strdup(g_token_types[error->got.type]);
-	return (ft_aformat(
-			"Syntax error! Expected %S, but got %S",
-			expected,
-			got
-		));
+	return (result);
 }
