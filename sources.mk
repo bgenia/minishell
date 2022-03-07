@@ -20,7 +20,6 @@ SRC@src := \
 	src/lexer/lexer/lexer_lex_quoted_word.c \
 	src/lexer/lexer/lexer_lex_redirection.c \
 	src/lexer/lexer/lexer_lex_pipe.c \
-	src/lexer/lexer/base/lexer_destroy.c \
 	src/lexer/lexer/base/lexer_create.c \
 	src/lexer/lexer/utils/lexer_set_status.c \
 	src/lexer/lexer/utils/lexer_skip.c \
@@ -31,6 +30,7 @@ SRC@src := \
 	src/lexer/lexer/lexer_lex_simple_word.c \
 	src/builtins/is_builtin.c \
 	src/builtins/cd.c \
+	src/builtins/env_utils.c \
 	src/builtins/exec_builtin.c \
 	src/builtins/exit.c \
 	src/builtins/unset.c \
@@ -40,11 +40,10 @@ SRC@src := \
 	src/builtins/env.c \
 	src/redirects/read_heredoc.c \
 	src/parser/ast/ast_destroy.c \
-	src/parser/parser_utils/create_parser_error_message.c \
+	src/parser/parser_utils/stringify_expected_tokens.c \
 	src/parser/parser/parser_parse_redirection.c \
 	src/parser/parser/parser_parse_command.c \
 	src/parser/parser/base/parser_create.c \
-	src/parser/parser/base/parser_destroy.c \
 	src/parser/parser/utils/parser_is_end.c \
 	src/parser/parser/utils/parser_set_status.c \
 	src/parser/parser/utils/parser_peek.c \
