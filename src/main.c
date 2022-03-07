@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:19:46 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/06 19:51:21 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:32:30 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	main(void)
 			rl_on_new_line();
 			continue ;
 		}
-		if (parse_command(line, &ast) == COMMAND_OK)
+		t_command_status parsing_status = parse_command(line, &ast);
+		if (parsing_status == COMMAND_OK)
 		{
 			int		_pipe[2];
 			int		_stdin;
@@ -236,13 +237,10 @@ int	main(void)
 			g_repl_state.vec_children = NULL;
 			// rl_on_new_line();
 		}
-		else
-		{
-			ft_printf("Syntax error!\n");
-		}
 		add_history(line);
 		free(line);
-		ast_destroy(&ast);
+		if (parsing_status != COMMAND_LEXICAL_ERROR)
+			ast_destroy(&ast);
 	}
 	ft_clearenv();
 }
