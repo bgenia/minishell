@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 12:56:44 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/07 15:13:50 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	print_sort_env(void)
 		ft_printf("%s\n", cp_env[i]);
 	free(cp_env);
 }
-
 
 int	builtin_export(int argc, char **argv)
 {
