@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:40:03 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 23:43:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/08 23:26:34 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void
 		"minishell: syntax error near unclosed quote\n%s\n",
 		lexer->source);
 	i = 0;
-	while (i < lexer->position - 1)
+	while (i < lexer->position)
 	{
 		ft_dprintf(STDERR_FILENO, " ");
 		i++;
 	}
-	ft_dprintf(STDERR_FILENO, TERM_F_RED "^--- here\n" TERM_RESET);
+	ft_dprintf(STDERR_FILENO,
+		TERM_F_RED "^--- expected %c\n" TERM_RESET,
+		lexer->error_info.expected_quote);
 }
