@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:08:23 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:52:02 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,21 @@ static void
 int
 	builtin_export(int argc, char **argv)
 {
+	int	status;
+
+	status = 0;
 	if (argc == 1)
 		_print_sort_env();
 	while (--argc > 0)
 	{
 		if (validate_env_identifier(argv[argc]))
 		{
-			ft_printf("%s: not a valid identifier\n", argv[argc]);
-			return (1);
+			ft_dprintf(STDERR_FILENO,
+				"minishell: export: %s: not a valid identifier\n", argv[argc]);
+			status = 1;
+			continue ;
 		}
 		ft_putenv(argv[argc]);
 	}
-	return (0);
+	return (status);
 }
