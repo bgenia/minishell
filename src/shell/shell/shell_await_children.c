@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_get_state.c                                  :+:      :+:    :+:   */
+/*   shell_await_children.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 23:46:59 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:02:45 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 22:59:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include <minishell/shell/shell.h>
 
-t_shell_state
-	*shell_get_state(void)
-{
-	static t_shell_state	shell_state = (t_shell_state){
-		.is_running = false,
-		.stdin_backup = -1,
-		.stdout_backup = -1,
-		._vec_children = NULL,
-		.last_status = 0,
-		.last_status_string = "0"
-	};
+#include <libft/vector/vector.h>
 
-	if (shell_state.stdin_backup == -1)
-		shell_state.stdin_backup = dup(STDIN_FILENO);
-	if (shell_state.stdout_backup == -1)
-		shell_state.stdout_backup = dup(STDOUT_FILENO);
-	return (&shell_state);
+int
+	shell_await_children(void)
+{
+	pid_t	*children;
+	size_t	i;
+	int		status;
+
+	children = shell_get_state()->_vec_children;
+	i = 0;
+	while (i < ft_vector_get_size(children))
+	{
+		waitpid(children[i], &status, 0);
+		i++;
+	}
+	ft_vector_free(children);
+	shell_get_state()->_vec_children = NULL;
+	return (WEXITSTATUS(status));
 }
