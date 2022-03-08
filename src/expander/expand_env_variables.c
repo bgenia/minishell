@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_token.c                                     :+:      :+:    :+:   */
+/*   expand_env_variables.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:19:40 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 19:02:50 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/08 23:02:06 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 
+#include <minishell/expander/expander.h>
+#include <minishell/shell/shell.h>
+
 #include <libft/string/string.h>
 #include <libft/string/format.h>
 #include <libft/memory/memory.h>
 #include <libft/system/env.h>
-
-#include <minishell/expander/expander.h>
 
 static char	*_get_ph_value(t_var_placeholder *ph, char *source)
 {
@@ -26,7 +27,10 @@ static char	*_get_ph_value(t_var_placeholder *ph, char *source)
 	char	*ph_value;
 
 	ph_var = ft_substr(source, ph->position + 1, ph->length - 1);
-	ph_value = ft_getenv(ph_var);
+	if (ft_streq(ph_var, "?"))
+		ph_value = shell_get_state()->last_status_string;
+	else
+		ph_value = ft_getenv(ph_var);
 	free(ph_var);
 	return (ph_value);
 }
