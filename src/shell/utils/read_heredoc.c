@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/08 02:51:09 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/08 23:15:22 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include <libft/string/string.h>
 #include <libft/memory/memory.h>
+#include <libft/terminal/termdefs.h>
 
 #include <readline/readline.h>
 
@@ -26,7 +27,9 @@ int	read_heredoc(char *name)
 	int		_pipe[2];
 
 	pipe(_pipe);
-	line = readline("heredoc> ");
+	line = readline(
+			"\001" TERM_F_LIGHT_BLUE "\002" "doc> " "\001" TERM_RESET "\002"
+			);
 	while (ft_strcmp(line, name))
 	{
 		write(_pipe[1], line, ft_strlen(line));
