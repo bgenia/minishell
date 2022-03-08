@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   shell_get_state.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/07 23:46:59 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 23:02:45 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
+#include <unistd.h>
 
-#include <minishell/shell/signals.h>
 #include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
-
-int
-	main(void)
+t_shell_state
+	*shell_get_state(void)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	static t_shell_state	shell_state = (t_shell_state){
+		.is_running = false,
+		.stdin_backup = -1,
+		.stdout_backup = -1,
+		._vec_children = NULL,
+		.last_status = 0,
+		.last_status_string = "0"
+	};
+
+	if (shell_state.stdin_backup == -1)
+		shell_state.stdin_backup = dup(STDIN_FILENO);
+	if (shell_state.stdout_backup == -1)
+		shell_state.stdout_backup = dup(STDOUT_FILENO);
+	return (&shell_state);
 }

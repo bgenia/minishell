@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execution_context_init.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 20:47:45 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 23:12:12 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
+#include <unistd.h>
 
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
+#include <minishell/parser/ast.h>
+#include <minishell/shell/execution/execution_context.h>
 
-#include <libft/system/env.h>
+#include <libft/vector/vector.h>
 
-#include <readline/readline.h>
-
-int
-	main(void)
+void
+	execution_context_init(t_execution_context *ctx, t_ast *ast)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	ctx->ast = ast;
+	ctx->vec_heredoc_fds = ft_vector_alloc_empty(sizeof(*ctx->vec_heredoc_fds));
+	ctx->heredoc_index = 0;
 }

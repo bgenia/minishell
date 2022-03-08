@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
+/*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
 /*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
-
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
+# include <stdbool.h>
 
 int
-	main(void)
-{
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
-}
+builtin_cd(int argc, char **argv);
+
+int
+builtin_export(int argc, char **argv, int fd);
+
+int
+builtin_unset(int argc, char **argv);
+
+int
+builtin_exit(int argc, char **argv);
+
+int
+builtin_echo(int argc, char **argv);
+
+int
+builtin_pwd(int argc, char **argv);
+
+int
+builtin_env(int argc, char **argv);
+
+#endif

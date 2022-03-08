@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
+/*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
 /*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
-
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
-
+#include <libft/io/printf.h>
 #include <libft/system/env.h>
 
-#include <readline/readline.h>
-
 int
-	main(void)
+	builtin_env(int argc, char **argv)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
+	int	i;
+
+	if (argc > 1)
+	{
+		ft_printf("env: %s: No such file or directory", argv[1]);
+		return (127);
+	}
+	i = 0;
+	while (environ[i])
+		ft_printf("%s\n", environ[i++]);
 	return (0);
 }

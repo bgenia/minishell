@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   shell_await_children.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 22:59:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
-#include <minishell/shell/signals.h>
 #include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
+#include <libft/vector/vector.h>
 
 int
-	main(void)
+	shell_await_children(void)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	pid_t	*children;
+	size_t	i;
+	int		status;
+
+	children = shell_get_state()->_vec_children;
+	i = 0;
+	while (i < ft_vector_get_size(children))
+	{
+		waitpid(children[i], &status, 0);
+		i++;
+	}
+	ft_vector_free(children);
+	shell_get_state()->_vec_children = NULL;
+	return (WEXITSTATUS(status));
 }

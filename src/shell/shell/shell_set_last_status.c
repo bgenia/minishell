@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   shell_set_last_status.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 23:03:18 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 23:04:43 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
-
-#include <minishell/shell/signals.h>
 #include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
+#include <libft/string/format.h>
 
-#include <readline/readline.h>
-
-int
-	main(void)
+void
+	shell_set_last_status(int status)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	shell_get_state()->last_status = status;
+	ft_format(
+		shell_get_state()->last_status_string,
+		4,
+		"%d",
+		status
+		);
 }

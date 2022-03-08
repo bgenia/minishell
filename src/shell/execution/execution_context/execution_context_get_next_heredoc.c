@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execution_context_get_next_heredoc.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 21:02:03 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 23:09:49 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
-
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
-
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
+#include <minishell/shell/execution/execution_context.h>
 
 int
-	main(void)
+	execution_context_get_next_heredoc(t_execution_context *ctx)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	return (ctx->vec_heredoc_fds[ctx->heredoc_index++]);
 }

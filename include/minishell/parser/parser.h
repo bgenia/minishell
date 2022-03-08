@@ -6,16 +6,16 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:50:21 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 16:21:15 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-#include <minishell/lexer/token.h>
+# include <minishell/lexer/token.h>
 
-#include <minishell/parser/ast.h>
+# include <minishell/parser/ast.h>
 
 typedef enum e_parser_status
 {

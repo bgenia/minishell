@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
+/*   Created: 2021/11/20 09:06:20 by ttanja            #+#    #+#             */
 /*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
-
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
-
+#include <unistd.h>
 #include <libft/system/env.h>
-
-#include <readline/readline.h>
+#include <libft/io/printf.h>
+#include <minishell/builtins/builtin_utils.h>
 
 int
-	main(void)
+	builtin_unset(int argc, char **argv)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
+	(void)argc;
+	if (validate_env_identifier(argv[1]))
+	{
+		ft_printf("%s: : not a valid identifier", argv[1]);
+		return (1);
+	}
+	ft_unsetenv(argv[1]);
 	return (0);
 }

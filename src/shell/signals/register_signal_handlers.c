@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   register_signal_handlers.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2021/11/14 18:24:37 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 23:10:37 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
+#include <stddef.h>
+#include <signal.h>
 
 #include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
-
-int
-	main(void)
+void	register_signal_handlers(void)
 {
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
+	struct sigaction	signal_handler;
+
+	signal_handler = (struct sigaction){0};
+	signal_handler.sa_handler = handle_signals;
+	sigaction(SIGINT, &signal_handler, NULL);
+	sigaction(SIGQUIT, &signal_handler, NULL);
 }

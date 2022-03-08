@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/08 04:23:49 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 20:44:54 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
+#ifndef BUILTIN_UTILS_H
+# define BUILTIN_UTILS_H
 
-#include <minishell/shell/signals.h>
-#include <minishell/shell/shell.h>
+# include <stdbool.h>
 
-#include <libft/system/env.h>
-
-#include <readline/readline.h>
+# include <minishell/parser/ast.h>
 
 int
-	main(void)
-{
-	rl_catch_signals = false;
-	register_signal_handlers();
-	shell_start();
-	ft_clearenv();
-	return (0);
-}
+exec_builtin(char *name, char **argv);
+
+bool
+is_builtin(char *name);
+
+bool
+is_builtin_command(t_ast_command *command);
+
+bool
+validate_env_identifier(char *identifier);
+
+#endif
