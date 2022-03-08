@@ -6,28 +6,29 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 02:12:34 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:47:08 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <stdbool.h>
 
 #include <libft/ctype.h>
 #include <libft/convert.h>
 #include <libft/string/string.h>
+#include <libft/io/printf.h>
 
-intmax_t
-	is_number(char *str)
+static bool
+	_parse_exit_code(char *str, intmax_t *result)
 {
-	intmax_t	result;
-	size_t		length;
+	size_t	length;
 
-	result = ft_atoi(str, &length);
+	*result = ft_atoi(str, &length);
 	if (length != ft_strlen(str))
-		return (-1);
-	return (result);
+		return (false);
+	return (true);
 }
 
 int
@@ -37,12 +38,12 @@ int
 
 	if (argc == 1)
 		exit(0);
-	code = is_number(argv[1]);
-	if (code < 0 || code > INT_MAX)
+	if (!_parse_exit_code(argv[1], &code))
 	{
-		printf("exit: %s: numeric argument required\n", argv[1]);
-		exit(255);
+		ft_dprintf(STDERR_FILENO,
+			"minishell: exit: %s: numeric argument required\n", argv[1]);
+		exit(2);
 	}
-	exit((char)code);
+	exit((unsigned char)code);
 	return (0);
 }
