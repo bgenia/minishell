@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:12:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:36:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void
 	if (access(command->vec_argv[0], F_OK))
 	{
 		ft_dprintf(STDERR_FILENO,
-			"minishell: %s: no such file or directory",
+			"minishell: %s: no such file or directory\n",
 			command->vec_argv[0]);
 		exit(127);
 	}
 	if (access(command->vec_argv[0], X_OK))
 	{
 		ft_dprintf(STDERR_FILENO,
-			"minishell: %s: permission denied",
+			"minishell: %s: permission denied\n",
 			command->vec_argv[0]);
 		exit(126);
 	}
 	execve(command->vec_argv[0], command->vec_argv, environ);
 	ft_dprintf(STDERR_FILENO,
-		"minishell: %s: execution failed",
+		"minishell: %s: execution failed\n",
 		command->vec_argv[0]);
 	exit(-1);
 }

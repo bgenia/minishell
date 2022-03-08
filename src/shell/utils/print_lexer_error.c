@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:40:03 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:26:34 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:35:28 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void
 
 	if (lexer->status != LEXER_ERROR_UNCLOSED_QUOTE)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: unexpected lexer error");
+		ft_dprintf(STDERR_FILENO, "minishell: unexpected lexer error\n");
 		return ;
 	}
 	ft_dprintf(STDERR_FILENO,

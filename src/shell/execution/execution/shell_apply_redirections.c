@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:12:47 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:35:08 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void
 		redirection->fd = STDOUT_FILENO;
 	if (redirection->fd == -1
 		&& (redirection->type == REDIR_HEREDOC
-			|| redirection->type == REDIR_OUTPUT))
+			|| redirection->type == REDIR_INPUT))
 		redirection->fd = STDIN_FILENO;
 }
 
@@ -49,7 +49,7 @@ static void
 	if (file == -1)
 	{
 		ft_dprintf(STDERR_FILENO,
-			"minishell: %s<>%d: unable to perform redirection",
+			"minishell: %s<>%d: unable to perform redirection\n",
 			redirection->file, redirection->fd);
 	}
 	dup2(file, redirection->fd);
