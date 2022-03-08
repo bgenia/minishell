@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 02:51:28 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 02:53:08 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:46:41 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 #include <minishell/parser/ast.h>
 #include <minishell/shell/shell_utils.h>
+#include <minishell/shell/execution/execution_context.h>
 
-int
-	*read_heredocs(t_ast *ast)
+void
+	read_heredocs(t_ast *ast, t_execution_context *ctx)
 {
 	size_t				i;
 	size_t				j;
 	t_ast_command		*command;
 	t_ast_redirection	*redirection;
-	int					*vec_fds;
 
-	vec_fds = ft_vector_alloc_empty(sizeof(*vec_fds));
 	i = 0;
 	while (i < ft_vector_get_size(ast->pipeline.vec_commands))
 	{
@@ -35,11 +34,10 @@ int
 			redirection = &command->vec_redirections[j];
 			if (redirection->type != REDIR_HEREDOC)
 				continue ;
-			*(int *)ft_vector_push_back(&vec_fds) = \
+			*(int *)ft_vector_push_back(&ctx->vec_heredoc_fds) = \
 				read_heredoc(redirection->file);
 			j++;
 		}
 		i++;
 	}
-	return (vec_fds);
 }

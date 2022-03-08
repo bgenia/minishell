@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:18:39 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 02:52:23 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:47:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <minishell/parser/ast.h>
 # include <minishell/parser/parser.h>
 # include <minishell/lexer/lexer.h>
+# include <minishell/shell/execution/execution_context.h>
 
 typedef enum e_command_status
 {
@@ -36,7 +37,7 @@ parse_command(char *source, t_ast *result);
 int
 read_heredoc(char *name);
 
-int
-*read_heredocs(t_ast *ast);
+void
+read_heredocs(t_ast *ast, t_execution_context *ctx);
 
 #endif
