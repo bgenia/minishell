@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:28:06 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:30:00 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/types.h>
 
 # include <minishell/parser/ast.h>
+# include <minishell/shell/execution/execution_context.h>
 
 # include <libft/terminal/termdefs.h>
 
@@ -43,7 +44,7 @@ void
 shell_read_heredocs(t_ast *ast, t_execution_context *ctx);
 
 void
-shell_clear_heredocs(t_execution_context *ctx)
+shell_clear_heredocs(t_execution_context *ctx);
 
 void
 shell_register_child_process(pid_t pid);
