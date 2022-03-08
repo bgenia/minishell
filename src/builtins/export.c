@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 18:27:12 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/08 10:40:51 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort_string(char **cp_env, int count)
 	}
 }
 
-void	print_sort_env(void)
+void	print_sort_env(int fd)
 {
 	int		count;
 	int		i;
@@ -57,19 +57,19 @@ void	print_sort_env(void)
 	sort_string(cp_env, count);
 	i = -1;
 	while (++i < count)
-		ft_printf("%s\n", cp_env[i]);
+		ft_dprintf(fd, "%s\n", cp_env[i]);
 	free(cp_env);
 }
 
-int	builtin_export(int argc, char **argv)
+int	builtin_export(int argc, char **argv, int fd)
 {
 	if (argc == 1)
-		print_sort_env();
+		print_sort_env(fd);
 	while (--argc > 0)
 	{
 		if (check_valid(argv[argc]))
 		{
-			ft_printf("%s: not a valid identifier\n", argv[argc]);
+			ft_dprintf(fd, "%s: not a valid identifier\n", argv[argc]);
 			return (1);
 		}
 		ft_putenv(argv[argc]);

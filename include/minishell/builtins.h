@@ -6,7 +6,7 @@
 /*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 12:50:23 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/08 10:42:15 by ttanja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int
 builtin_cd(int argc, char **argv);
 
 int
-builtin_export(int argc, char **argv);
+builtin_export(int argc, char **argv, int fd);
 
 int
 builtin_unset(int argc, char **argv);
