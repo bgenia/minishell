@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:11:02 by bgenia            #+#    #+#             */
-/*   Updated: 2022/02/27 01:42:56 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:12:00 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdbool.h>
 
 #include <libft/string/string.h>
-#include <libft/types.h>
+#include <libft/ctype.h>
 
 #include <minishell/expander/expander.h>
 

@@ -6,11 +6,11 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 09:44:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 15:29:54 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:12:00 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/types.h>
+#include <libft/ctype.h>
 #include <libft/string/string.h>
 #include <libft/vector/vector.h>
 

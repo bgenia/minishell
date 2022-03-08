@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/08 04:39:07 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:12:34 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#include <libft/types.h>
+#include <libft/ctype.h>
+#include <libft/convert.h>
 #include <libft/string/string.h>
 
 intmax_t

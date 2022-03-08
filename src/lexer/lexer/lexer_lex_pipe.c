@@ -6,11 +6,11 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 10:36:03 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:50:04 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:12:00 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/types.h>
+#include <libft/ctype.h>
 
 #include <minishell/lexer/lexer.h>
 #include <minishell/lexer/token.h>
