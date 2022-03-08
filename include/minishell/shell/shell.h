@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:14:08 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:28:06 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ t_shell_state
 void
 shell_set_last_status(int status);
 
-// void
-// shell_init(void);
-
 void
 shell_start(void);
+
+void
+shell_read_heredocs(t_ast *ast, t_execution_context *ctx);
+
+void
+shell_clear_heredocs(t_execution_context *ctx)
 
 void
 shell_register_child_process(pid_t pid);
 
 int
 shell_await_children(void);
-
-void
-shell_destroy(void);
 
 #endif
