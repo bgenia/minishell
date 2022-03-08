@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:32:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:05:15 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:45:47 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void
 
 	shell_get_state()->is_running = true;
 	execution_context_init(&ctx, ast);
+	read_heredocs(ast, &ctx);
 	if (_is_only_command(&ctx)
 		&& is_builtin_command(&ast->pipeline.vec_commands[0]))
 		status = shell_execute_builtin(&ast->pipeline.vec_commands[0], &ctx);
