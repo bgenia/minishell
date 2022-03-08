@@ -6,16 +6,16 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:50:21 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/10 21:44:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:55:18 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-#include <minishell/lexer/token.h>
+# include <minishell/lexer/token.h>
 
-#include <minishell/parser/ast.h>
+# include <minishell/parser/ast.h>
 
 typedef enum e_parser_status
 {
@@ -31,7 +31,7 @@ typedef struct s_parser_error_info
 
 typedef struct s_parser
 {
-    t_token         	*vec_tokens;
+	t_token				*vec_tokens;
 	size_t				position;
 	size_t				length;
 	t_ast				*ast;
