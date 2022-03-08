@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_command.c                                  :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 23:13:52 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/06 23:15:55 by bgenia           ###   ########.fr       */
+/*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/08 04:43:01 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-void
-	process_command(char *line)
-{
-	int		std_fd_backup[2];
+# include <stdbool.h>
 
-	std_fd_backup[0] = dup(STDIN_FILENO);
-	std_fd_backup[1] = dup(STDOUT_FILENO);
-}
+int
+builtin_cd(int argc, char **argv);
+
+int
+builtin_export(int argc, char **argv);
+
+int
+builtin_unset(int argc, char **argv);
+
+int
+builtin_exit(int argc, char **argv);
+
+int
+builtin_echo(int argc, char **argv);
+
+int
+builtin_pwd(int argc, char **argv);
+
+int
+builtin_env(int argc, char **argv);
+
+#endif
