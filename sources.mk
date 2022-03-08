@@ -50,7 +50,6 @@ SRC@src := \
 	src/parser/parser/parser_parse.c \
 	src/parser/parser/parser_parse_pipeline.c \
 	src/shell/utils/parse_command.c \
-	src/shell/utils/read_heredocs.c \
 	src/shell/utils/read_heredoc.c \
 	src/shell/utils/print_lexer_error.c \
 	src/shell/utils/print_parser_error.c \
@@ -69,6 +68,8 @@ SRC@src := \
 	src/shell/signals/register_signal_handlers.c \
 	src/shell/shell/shell_set_last_status.c \
 	src/shell/shell/shell_get_state.c \
+	src/shell/shell/shell_read_heredocs.c \
+	src/shell/shell/shell_clear_heredocs.c \
 	src/shell/shell/shell_start.c \
 	src/shell/shell/shell_register_child_process.c \
 	src/shell/shell/shell_await_children.c \
