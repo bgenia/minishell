@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:48:52 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int
 		dir = argv[1];
 	if (chdir(dir) != 0)
 	{
-		ft_printf("cd: %s: No such file or directory\n", dir);
+		ft_dprintf(STDERR_FILENO,
+			"minishell: cd: %s: No such file or directory\n", dir);
 		return (1);
 	}
 	if (getcwd(buffer, 1024))

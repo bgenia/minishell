@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:48:35 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int
 
 	if (argc > 1)
 	{
-		ft_printf("env: %s: No such file or directory", argv[1]);
+		ft_dprintf(STDERR_FILENO,
+			"minishell: env: %s: no such file or directory", argv[1]);
 		return (127);
 	}
 	i = 0;
