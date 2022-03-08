@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:19:40 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:02:06 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:19:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include <libft/memory/memory.h>
 #include <libft/system/env.h>
 
-static char	*_get_ph_value(t_var_placeholder *ph, char *source)
+static char
+	*_get_ph_value(t_var_placeholder *ph, char *source)
 {
 	char	*ph_var;
 	char	*ph_value;
@@ -35,11 +36,8 @@ static char	*_get_ph_value(t_var_placeholder *ph, char *source)
 	return (ph_value);
 }
 
-static char	*_create_new_value(
-	char *old_value,
-	t_var_placeholder *ph,
-	char *ph_value
-)
+static char
+	*_create_new_value(char *old_value, t_var_placeholder *ph, char *ph_value)
 {
 	size_t	result_size;
 	char	*result;
@@ -56,7 +54,8 @@ static char	*_create_new_value(
 	return (result);
 }
 
-void	expand_env_variables(char **source)
+void
+	expand_env_variables(char **source)
 {
 	t_var_placeholder	ph;
 	char				*ph_value;

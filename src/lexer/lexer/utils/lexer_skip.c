@@ -6,13 +6,14 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:36:58 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/22 18:37:58 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:17:56 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell/lexer/lexer.h>
 
-char	lexer_skip(t_lexer *lexer, int count)
+char
+	lexer_skip(t_lexer *lexer, int count)
 {
 	lexer->position += count;
 	return (lexer_peek(lexer, 0));

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 19:16:22 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/16 21:38:43 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 
 #include <minishell/lexer/token.h>
 
-static size_t	_insert_new_tokens(
-	t_token **token_vec_ptr,
-	char **words,
-	size_t i,
-	t_token src_token
-)
+static size_t
+	_insert_new_tokens(
+		t_token **token_vec_ptr,
+		char **words,
+		size_t i,
+		t_token src_token
+	)
 {
 	size_t	word_count;
 	size_t	j;
@@ -52,7 +53,8 @@ static size_t	_insert_new_tokens(
 	return (j);
 }
 
-void	split_simple_words(t_token **token_vec_ptr)
+void
+	split_simple_words(t_token **token_vec_ptr)
 {
 	size_t	i;
 	t_token	*current;

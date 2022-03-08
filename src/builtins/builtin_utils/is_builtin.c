@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttanja <ttanja@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:43:34 by bgenia            #+#    #+#             */
-/*   Updated: 2022/01/02 21:41:30 by ttanja           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:19:38 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 #include <libft/string/string.h>
 
-bool	is_builtin(char *name)
+bool
+	is_builtin(char *name)
 {
 	if (ft_streq(name, "echo"))
 		return (true);

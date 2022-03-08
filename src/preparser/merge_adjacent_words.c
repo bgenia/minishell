@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 19:16:22 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/16 19:30:58 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:16 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 #include <minishell/lexer/token.h>
 
-static void	_merge_tokens(t_token *dst, t_token *other)
+static void
+	_merge_tokens(t_token *dst, t_token *other)
 {
 	char	*new_value;
 
@@ -29,7 +30,8 @@ static void	_merge_tokens(t_token *dst, t_token *other)
 	dst->is_quoted = other->is_quoted;
 }
 
-void	merge_adjacent_words(t_token **token_vec_ptr)
+void
+	merge_adjacent_words(t_token **token_vec_ptr)
 {
 	size_t	i;
 	t_token	*prev;

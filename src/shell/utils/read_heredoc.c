@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 01:51:44 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:15:24 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 #include <readline/readline.h>
 
-int	read_heredoc(char *name)
+int
+	read_heredoc(char *name)
 {
 	char	*line;
 	int		_pipe[2];

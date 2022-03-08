@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:00 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 23:54:48 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:15:36 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 #include <readline/readline.h>
 
-void	handle_signals(int signal)
+void
+	handle_signals(int signal)
 {
 	if (signal == SIGINT)
 	{

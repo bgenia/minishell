@@ -6,13 +6,14 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 10:38:55 by bgenia            #+#    #+#             */
-/*   Updated: 2021/10/31 10:39:48 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:18:27 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 
-bool	is_redirection_char(char c)
+bool
+	is_redirection_char(char c)
 {
 	return (c == '>' || c == '<');
 }

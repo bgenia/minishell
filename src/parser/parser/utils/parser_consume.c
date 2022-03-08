@@ -6,14 +6,15 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:35:08 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/09 20:48:38 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:17:02 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell/parser/parser.h>
 #include <minishell/lexer/token.h>
 
-bool	parser_consume(t_parser *parser, t_token_type type)
+bool
+	parser_consume(t_parser *parser, t_token_type type)
 {
 	if (!parser_match(parser, type))
 	{

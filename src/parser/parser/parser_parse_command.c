@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:11:16 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/10 21:51:29 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:37 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 #include <minishell/lexer/token.h>
 #include <minishell/lexer/lexer_utils.h>
 
-t_parser_status	parser_parse_command(
-	t_parser *parser,
-	t_ast_command *result
-)
+t_parser_status
+	parser_parse_command(t_parser *parser, t_ast_command *result)
 {
 	result->vec_argv = ft_vector_alloc_empty(sizeof(*result->vec_argv));
 	result->vec_redirections

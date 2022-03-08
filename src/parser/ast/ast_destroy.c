@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:46:30 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 15:33:02 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:21 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 #include <minishell/parser/ast.h>
 
-void	ast_destroy(t_ast *ast)
+void
+	ast_destroy(t_ast *ast)
 {
 	size_t	i;
 	size_t	j;

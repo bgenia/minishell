@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:11:02 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:12:00 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:19:16 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 
 #include <minishell/expander/expander.h>
 
-static bool	_is_placeholder_delimiter(char c)
+static bool
+	_is_placeholder_delimiter(char c)
 {
 	return (ft_isspace(c) || c == '$' || c == '\'');
 }
 
-bool	find_next_var_placeholder(char *source, t_var_placeholder *result)
+bool
+	find_next_var_placeholder(char *source, t_var_placeholder *result)
 {
 	char	*placeholder;
 	size_t	i;

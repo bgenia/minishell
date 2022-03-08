@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 18:38:17 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 16:21:50 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:19:27 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 #include <libft/string/format.h>
 #include <libft/system/env.h>
 
-static char	*_dup_if_executable(char *path)
+static char
+	*_dup_if_executable(char *path)
 {
 	if (access(path, X_OK) == 0)
 		return (ft_strdup(path));
 	return (NULL);
 }
 
-static char	**_get_path_list(void)
+static char
+	**_get_path_list(void)
 {
 	char	*env_path;
 
@@ -34,7 +36,8 @@ static char	**_get_path_list(void)
 	return (ft_smsplit(env_path, ':'));
 }
 
-char	*get_executable(char *path)
+char
+	*get_executable(char *path)
 {
 	char	**env_path_list;
 	char	test_path[1024];

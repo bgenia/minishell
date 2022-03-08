@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:18:52 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:18:59 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:19:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <minishell/expander/expander.h>
 #include <minishell/builtins/builtin_utils.h>
 
-void	expand_executables(t_ast *ast)
+void
+	expand_executables(t_ast *ast)
 {
 	size_t	i;
 	char	**program;

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:32:19 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 17:31:42 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:48 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include <minishell/parser/ast.h>
 #include <minishell/lexer/token.h>
 
-t_parser_status	pasrer_parse_redirection(
-	t_parser *parser,
-	t_ast_redirection *result
-)
+t_parser_status
+	pasrer_parse_redirection(t_parser *parser, t_ast_redirection *result)
 {
 	t_token	redirection;
 	char	*source;

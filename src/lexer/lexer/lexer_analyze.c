@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:05:20 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:12:00 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:18:02 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <minishell/lexer/token.h>
 #include <minishell/lexer/lexer_utils.h>
 
-t_lexer_status	lexer_analyze(t_lexer *lexer, char *source)
+t_lexer_status
+	lexer_analyze(t_lexer *lexer, char *source)
 {
 	char	current;
 

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 19:16:22 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/10 22:26:52 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:16:08 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 #include <minishell/lexer/token.h>
 
-void	remove_whitespaces(t_token **token_vec_ptr)
+void
+	remove_whitespaces(t_token **token_vec_ptr)
 {
 	size_t	i;
 
