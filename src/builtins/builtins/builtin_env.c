@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/08 04:42:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:22:44 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int
 	}
 	i = 0;
 	while (environ[i])
-		ft_printf(environ[i++]);
+		ft_printf("%s\n", environ[i++]);
 	return (0);
 }
