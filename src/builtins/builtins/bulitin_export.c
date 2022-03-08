@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 02:08:23 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void
 	_sort_string(cp_env, count);
 	i = -1;
 	while (++i < count)
-		ft_dprintf(fd, "%s\n", cp_env[i]);
+		ft_printf("%s\n", cp_env[i]);
 	free(cp_env);
 }
 
