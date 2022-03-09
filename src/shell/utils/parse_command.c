@@ -6,15 +6,9 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:07:23 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:22:57 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <libft/io/printf.h>
-#include <libft/vector/vector.h>
-#include <libft/system/env.h>
-#include <libft/terminal/termdefs.h>
-#include <libft/string/string.h>
 
 #include <minishell/lexer/lexer.h>
 #include <minishell/lexer/token.h>
@@ -24,6 +18,12 @@
 #include <minishell/expander/expander.h>
 #include <minishell/preparser/preparser.h>
 #include <minishell/shell/shell_utils.h>
+#include <minishell/shell/shell_colors.h>
+
+#include <libft/io/printf.h>
+#include <libft/vector/vector.h>
+#include <libft/system/env.h>
+#include <libft/string/string.h>
 
 static void
 	_free_tokens(t_token *vec_tokens)

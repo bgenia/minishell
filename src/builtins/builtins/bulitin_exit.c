@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 07:02:17 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include <limits.h>
 #include <stdbool.h>
 
+#include <minishell/shell/shell_colors.h>
+
 #include <libft/ctype.h>
 #include <libft/convert.h>
 #include <libft/string/string.h>
 #include <libft/io/printf.h>
-#include <libft/terminal/termdefs.h>
 
 static bool
 	_parse_exit_code(char *str, intmax_t *result)
@@ -41,8 +42,8 @@ int
 		exit(0);
 	if (!_parse_exit_code(argv[1], &code))
 	{
-		ft_dprintf(STDERR_FILENO, TERM_F_RED
-			"minishell: exit: %s: numeric argument required\n" TERM_RESET,
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: exit: %s: numeric argument required\n" _TERM_RESET,
 			argv[1]);
 		exit(2);
 	}

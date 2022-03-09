@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_env.c                                      :+:      :+:    :+:   */
+/*   shell_colors.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 07:32:41 by bgenia           ###   ########.fr       */
+/*   Created: 2022/03/09 07:18:58 by bgenia            #+#    #+#             */
+/*   Updated: 2022/03/09 07:29:21 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell/shell/shell_colors.h>
+#ifndef SHELL_COLORS_H
+# define SHELL_COLORS_H
 
-#include <libft/io/printf.h>
-#include <libft/system/env.h>
+# include <libft/terminal/termdefs.h>
 
-int
-	builtin_env(int argc, char **argv)
-{
-	int	i;
+# ifndef USE_COLORS
 
-	if (argc > 1)
-	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: env: %s: no such file or directory" _TERM_RESET,
-			argv[1]);
-		return (127);
-	}
-	i = 0;
-	while (environ[i])
-		ft_printf("%s\n", environ[i++]);
-	return (0);
-}
+#  define _TERM_F_RED ""
+#  define _TERM_F_YELLOW ""
+#  define _TERM_RESET ""
+
+# else
+
+#  define _TERM_F_RED TERM_F_RED
+#  define _TERM_F_YELLOW TERM_F_YELLOW
+#  define _TERM_RESET TERM_RESET
+
+# endif
+
+#endif

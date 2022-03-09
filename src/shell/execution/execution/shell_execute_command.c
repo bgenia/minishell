@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:03:10 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 
 #include <minishell/parser/ast.h>
 #include <minishell/builtins/builtin_utils.h>
+#include <minishell/shell/shell_colors.h>
 
 #include <libft/system/env.h>
 #include <libft/io/printf.h>
 #include <libft/string/string.h>
-#include <libft/terminal/termdefs.h>
 
 static void
 	_display_missing_file_error(t_ast_command *command)
 {
 	if (ft_strchr(command->vec_argv[0], '/'))
 	{
-		ft_dprintf(STDERR_FILENO, TERM_F_RED
-			"minishell: %s: no such file or directory\n" TERM_RESET,
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: no such file or directory\n" _TERM_RESET,
 			command->vec_argv[0]);
 	}
 	else
 	{
-		ft_dprintf(STDERR_FILENO, TERM_F_RED
-			"minishell: %s: command not found\n" TERM_RESET,
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: command not found\n" _TERM_RESET,
 			command->vec_argv[0]);
 	}
 }
@@ -41,16 +41,16 @@ static void
 static void
 	_display_missing_permissions_error(t_ast_command *command)
 {
-	ft_dprintf(STDERR_FILENO, TERM_F_RED
-		"minishell: %s: permission denied\n" TERM_RESET,
+	ft_dprintf(STDERR_FILENO, _TERM_F_RED
+		"minishell: %s: permission denied\n" _TERM_RESET,
 		command->vec_argv[0]);
 }
 
 static void
 	_display_unknown_execution_error(t_ast_command *command)
 {
-	ft_dprintf(STDERR_FILENO, TERM_F_RED
-		"minishell: %s: execution failed\n" TERM_RESET,
+	ft_dprintf(STDERR_FILENO, _TERM_F_RED
+		"minishell: %s: execution failed\n" _TERM_RESET,
 		command->vec_argv[0]);
 }
 

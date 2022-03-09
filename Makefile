@@ -14,6 +14,16 @@ $(NAME): $(OBJ)
 
 LDLIBS += -lreadline
 
+MODIFIERS := use_colors
+
+include maketools/modifiers.mk
+
+ifdef MODIFIERS[use_colors]
+
+CPPFLAGS += -DUSE_COLORS
+
+endif
+
 ifndef DEBUG_MODE
 
 export FT_OPTIONS := FT_MALLOC_EXIT

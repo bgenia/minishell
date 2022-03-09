@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:03:22 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <minishell/parser/ast.h>
 #include <minishell/shell/shell.h>
 #include <minishell/shell/execution/execution_context.h>
+#include <minishell/shell/shell_colors.h>
 
 #include <libft/vector/vector.h>
 #include <libft/io/printf.h>
-#include <libft/terminal/termdefs.h>
 
 static void
 	_normalize_redirection_fd(t_ast_redirection *redirection)
@@ -49,8 +49,8 @@ static void
 		file = execution_context_get_next_heredoc(ctx);
 	if (file == -1)
 	{
-		ft_dprintf(STDERR_FILENO, TERM_F_RED
-			"minishell: %s<>%d: unable to perform redirection\n" TERM_RESET,
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s<>%d: unable to perform redirection\n" _TERM_RESET,
 			redirection->file, redirection->fd);
 	}
 	dup2(file, redirection->fd);

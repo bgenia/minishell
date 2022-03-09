@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:01:09 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:14:51 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:33:46 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 #include <minishell/shell/shell.h>
 #include <minishell/shell/execution/execution.h>
+#include <minishell/shell/shell_colors.h>
 
-#include <libft/terminal/termdefs.h>
 #include <libft/string/string.h>
 
 #include <readline/readline.h>
@@ -42,10 +42,8 @@ void
 			rl_on_new_line();
 			continue ;
 		}
-		if (shell_execute_line(line) == SHELL_OK)
-		{
-			add_history(line);
-		}
+		shell_execute_line(line);
+		add_history(line);
 		free(line);
 	}
 }
