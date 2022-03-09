@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:17:51 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdbool.h>
+#include <errno.h>
 
 #include <minishell/shell/shell_colors.h>
 
@@ -28,7 +29,7 @@ static bool
 	size_t	length;
 
 	*result = ft_atoi(str, &length);
-	if (length != ft_strlen(str))
+	if (length != ft_strlen(str) || errno == ERANGE)
 		return (false);
 	return (true);
 }
