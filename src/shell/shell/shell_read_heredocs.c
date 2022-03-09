@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 02:51:28 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:26:59 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 03:15:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ void
 	i = 0;
 	while (i < ft_vector_get_size(ast->pipeline.vec_commands))
 	{
-		command = &ast->pipeline.vec_commands[i];
+		command = &ast->pipeline.vec_commands[i++];
 		j = 0;
 		while (j < ft_vector_get_size(command->vec_redirections))
 		{
-			redirection = &command->vec_redirections[j];
+			redirection = &command->vec_redirections[j++];
 			if (redirection->type != REDIR_HEREDOC)
 				continue ;
 			*(int *)ft_vector_push_back(&ctx->vec_heredoc_fds) = \
 				read_heredoc(redirection->file);
-			j++;
 		}
-		i++;
 	}
 }
