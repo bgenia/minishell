@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 10:17:51 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:19:37 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 #include <libft/ctype.h>
 #include <libft/convert.h>
-#include <libft/string/string.h>
 #include <libft/io/printf.h>
 
 static bool
@@ -29,7 +28,7 @@ static bool
 	size_t	length;
 
 	*result = ft_atoi(str, &length);
-	if (length != ft_strlen(str) || errno == ERANGE)
+	if (errno == ERANGE)
 		return (false);
 	return (true);
 }
