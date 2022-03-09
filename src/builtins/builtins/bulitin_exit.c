@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 10:19:37 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:20:56 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@
 static bool
 	_parse_exit_code(char *str, intmax_t *result)
 {
-	size_t	length;
-
-	*result = ft_atoi(str, &length);
-	if (errno == ERANGE)
-		return (false);
-	return (true);
+	*result = ft_atoi(str, NULL);
+	return (errno != ERANGE);
 }
 
 int
