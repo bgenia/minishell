@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 10:20:56 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 14:52:11 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int
 {
 	intmax_t	code;
 
+	if (argc > 2)
+	{
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: exit: too many arguments\n" _TERM_RESET);
+		return (2);
+	}
 	if (argc == 1)
 		exit(0);
 	if (!_parse_exit_code(argv[1], &code))

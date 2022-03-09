@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 07:32:41 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 14:52:07 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int
 {
 	int	i;
 
+	(void)argv;
 	if (argc > 1)
 	{
 		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: env: %s: no such file or directory" _TERM_RESET,
-			argv[1]);
-		return (127);
+			"minishell: env: too many arguments\n" _TERM_RESET);
+		return (2);
 	}
 	i = 0;
 	while (environ[i])
