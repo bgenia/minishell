@@ -28,6 +28,7 @@ SRC@src := \
 	src/builtins/builtins/builtin_cd.c \
 	src/builtins/builtins/bulitin_exit.c \
 	src/builtins/builtins/builtin_echo.c \
+	src/builtins/builtins/builtin_noop.c \
 	src/builtins/builtins/builtin_env.c \
 	src/builtins/builtins/bulitin_pwd.c \
 	src/builtins/builtins/bulitin_export.c \
