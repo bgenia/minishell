@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 03:55:02 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:55:53 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:25:45 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ shell_apply_redirections(t_ast_command *command, t_execution_context *ctx);
 
 void
 shell_close_redirections(t_ast_command *command);
+
+int
+shell_read_heredoc(char *name);
 
 void
 shell_read_heredocs(t_ast *ast, t_execution_context *ctx);

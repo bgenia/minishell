@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 02:51:28 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:15:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:25:24 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void
 			if (redirection->type != REDIR_HEREDOC)
 				continue ;
 			*(int *)ft_vector_push_back(&ctx->vec_heredoc_fds) = \
-				read_heredoc(redirection->file);
+				shell_read_heredoc(redirection->file);
 		}
 	}
 }
