@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 06:25:09 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:54:46 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <signal.h>
+
+#include <minishell/shell/shell.h>
 
 #include <libft/string/string.h>
 #include <libft/memory/memory.h>
@@ -34,7 +37,10 @@ int
 		line = readline(
 				"\001" TERM_F_LIGHT_BLUE "\002" "doc> " "\001" TERM_RESET "\002"
 				);
-		if (!line)
+		if (!line && shell_match_last_signal(SIGINT))
+			ft_dprintf(STDERR_FILENO, "minishell: warning: here-document "
+				"delimited by SIGINT (wanted '%s')\n", name);
+		else if (!line)
 			ft_dprintf(STDERR_FILENO, "minishell: warning: here-document "
 				"delimited by end-of-file (wanted '%s')\n", name);
 		if (!line || ft_streq(line, name))
