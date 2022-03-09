@@ -6,12 +6,13 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 11:06:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 11:52:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
 #include <minishell/parser/ast.h>
 #include <minishell/shell/shell.h>
@@ -35,6 +36,23 @@ static void
 }
 
 static void
+	_print_open_error(t_ast_redirection *redirection)
+{
+	if (errno == EISDIR)
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: is a directiory\n" _TERM_RESET,
+			redirection->file);
+	else if (errno == EACCES)
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: permission denied\n" _TERM_RESET,
+			redirection->file);
+	else
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: unable to perform redirection\n" _TERM_RESET,
+			redirection->file);
+}
+
+static void
 	_apply_redirection(t_ast_redirection *redirection, t_execution_context *ctx)
 {
 	int	file;
@@ -48,12 +66,9 @@ static void
 	else
 		file = execution_context_get_next_heredoc(ctx);
 	if (file == -1)
-	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s<>%d: unable to perform redirection\n" _TERM_RESET,
-			redirection->file, redirection->fd);
-	}
-	dup2(file, redirection->fd);
+		_print_open_error(redirection);
+	else
+		dup2(file, redirection->fd);
 }
 
 void
