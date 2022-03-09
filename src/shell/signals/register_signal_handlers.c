@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:24:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:15:38 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:57:50 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 void
 	register_signal_handlers(void)
 {
-	struct sigaction	signal_handler;
-
-	signal_handler = (struct sigaction){0};
-	signal_handler.sa_handler = handle_signals;
-	sigaction(SIGINT, &signal_handler, NULL);
-	sigaction(SIGQUIT, &signal_handler, NULL);
+	signal(SIGINT, handle_signals);
+	signal(SIGQUIT, handle_signals);
 }

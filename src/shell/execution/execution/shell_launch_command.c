@@ -6,12 +6,13 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:34:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:58:44 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <unistd.h>
+#include <signal.h>
 
 #include <minishell/parser/ast.h>
 #include <minishell/shell/shell.h>
@@ -38,6 +39,13 @@ static void
 	close(ctx->current_pipe[1]);
 }
 
+static void
+	_reset_signal_handlers(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+}
+
 bool
 	shell_launch_command(
 		t_ast_command *command,
@@ -56,6 +64,7 @@ bool
 	}
 	if (pid == 0)
 	{
+		_reset_signal_handlers();
 		if (has_output_pipe)
 			_apply_output_pipe(ctx);
 		shell_apply_redirections(command, ctx);
