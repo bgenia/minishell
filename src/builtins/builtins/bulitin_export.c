@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:06:57 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:02:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <libft/system/env.h>
 #include <libft/io/printf.h>
 #include <libft/array.h>
+#include <libft/terminal/termdefs.h>
 
 static int
 	_string_comparator(char **a, char **b, void *arg, size_t element_size)
@@ -60,8 +61,9 @@ int
 	{
 		if (validate_env_identifier(argv[argc]))
 		{
-			ft_dprintf(STDERR_FILENO,
-				"minishell: export: %s: not a valid identifier\n", argv[argc]);
+			ft_dprintf(STDERR_FILENO, TERM_F_RED
+				"minishell: export: %s: not a valid identifier\n" TERM_RESET,
+				argv[argc]);
 			status = 1;
 			continue ;
 		}

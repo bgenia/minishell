@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 02:47:08 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:02:17 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <libft/convert.h>
 #include <libft/string/string.h>
 #include <libft/io/printf.h>
+#include <libft/terminal/termdefs.h>
 
 static bool
 	_parse_exit_code(char *str, intmax_t *result)
@@ -40,8 +41,9 @@ int
 		exit(0);
 	if (!_parse_exit_code(argv[1], &code))
 	{
-		ft_dprintf(STDERR_FILENO,
-			"minishell: exit: %s: numeric argument required\n", argv[1]);
+		ft_dprintf(STDERR_FILENO, TERM_F_RED
+			"minishell: exit: %s: numeric argument required\n" TERM_RESET,
+			argv[1]);
 		exit(2);
 	}
 	exit((unsigned char)code);

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:40:03 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 01:35:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:07:37 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void
 
 	if (lexer->status != LEXER_ERROR_UNCLOSED_QUOTE)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: unexpected lexer error\n");
+		ft_dprintf(STDERR_FILENO, TERM_F_RED
+			"minishell: unexpected lexer error\n" TERM_RESET);
 		return ;
 	}
-	ft_dprintf(STDERR_FILENO,
-		"minishell: syntax error near unclosed quote\n%s\n",
+	ft_dprintf(STDERR_FILENO, TERM_F_RED
+		"minishell: syntax error near unclosed quote\n> " TERM_RESET "%s\n  ",
 		lexer->source);
 	i = 0;
 	while (i < lexer->position)

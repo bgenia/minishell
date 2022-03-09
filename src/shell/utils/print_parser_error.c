@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:42:10 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 01:12:44 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:06:00 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void
 		parser->error_info.got.value = "EOF";
 		parser->error_info.got.position = ft_strlen(source);
 	}
-	ft_dprintf(STDERR_FILENO,
-		"minishell: syntax error near unexpected token '%s'\n%s\n",
-		parser->error_info.got.value,
-		source);
+	ft_dprintf(STDERR_FILENO, TERM_F_RED
+		"minishell: syntax error near unexpected token '%s'\n> " TERM_RESET
+		"%s\n  ", parser->error_info.got.value, source);
 	i = 0;
 	while (i < parser->error_info.got.position)
 	{
