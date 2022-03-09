@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:00 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:15:36 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 04:29:15 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void
 		ft_printf("\n");
 		if (!shell_get_state()->is_running)
 		{
+			shell_set_last_status(128 + SIGINT);
 			rl_on_new_line();
 			rl_replace_line("", false);
 			rl_redisplay();
