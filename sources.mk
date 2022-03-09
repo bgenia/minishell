@@ -73,5 +73,6 @@ SRC@src := \
 	src/shell/shell/shell_match_last_signal.c \
 	src/shell/shell/shell_get_state.c \
 	src/shell/shell/shell_start.c \
+	src/shell/shell/shell_increment_level.c \
 	src/shell/shell/shell_await_children.c \
 	src/main.c \

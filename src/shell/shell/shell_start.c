@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:01:09 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 11:45:59 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 23:02:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void
 {
 	char	*line;
 
+	shell_increment_level();
 	while (true)
 	{
 		line = readline(

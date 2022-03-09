@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:33:12 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 22:59:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_shell_state
 	pid_t				last_child;
 	int					last_status;
 	char				last_status_string[4];
+	int					shell_level;
 }	t_shell_state;
 
 t_shell_state
@@ -53,5 +54,8 @@ shell_await_children(void);
 
 bool
 shell_match_last_signal(int signal);
+
+void
+shell_increment_level(void);
 
 #endif
