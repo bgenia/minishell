@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:59:12 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 14:30:34 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int
 	int	status;
 	int	result;
 
-	if (waitpid(shell_get_state()->last_child, &status, WUNTRACED) == -1)
-		ft_dprintf(STDERR_FILENO, "Cringe\n");
+	waitpid(shell_get_state()->last_child, &status, 0);
 	result = 1;
 	while (result > 0)
 		result = waitpid(-1, NULL, 0);
