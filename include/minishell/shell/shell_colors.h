@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:18:58 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:29:21 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 07:57:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 # define SHELL_COLORS_H
 
 # include <libft/terminal/termdefs.h>
+
+# ifdef NO_COLORS
+
+#  ifdef USE_COLORS
+#   undef USE_COLORS
+#  endif
+
+#  undef TERM_F_BLUE
+#  undef TERM_F_LIGHT_BLUE
+#  undef TERM_RESET
+
+#  define TERM_F_BLUE ""
+#  define TERM_F_LIGHT_BLUE ""
+#  define TERM_RESET ""
+
+# endif
 
 # ifndef USE_COLORS
 
