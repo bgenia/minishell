@@ -51,12 +51,12 @@ SRC@src := \
 	src/parser/parser/parser_parse.c \
 	src/parser/parser/parser_parse_pipeline.c \
 	src/shell/utils/parse_command.c \
-	src/shell/utils/read_heredoc.c \
 	src/shell/utils/print_lexer_error.c \
 	src/shell/utils/print_parser_error.c \
 	src/shell/execution/execution_context/execution_context_init.c \
 	src/shell/execution/execution_context/execution_context_get_next_heredoc.c \
 	src/shell/execution/execution_context/execution_context_skip_heredocs.c \
+	src/shell/execution/redirections/shell_read_heredoc.c \
 	src/shell/execution/redirections/shell_apply_redirections.c \
 	src/shell/execution/redirections/shell_read_heredocs.c \
 	src/shell/execution/redirections/shell_clear_heredocs.c \
@@ -70,6 +70,7 @@ SRC@src := \
 	src/shell/signals/handle_signals.c \
 	src/shell/signals/register_signal_handlers.c \
 	src/shell/shell/shell_set_last_status.c \
+	src/shell/shell/shell_match_last_signal.c \
 	src/shell/shell/shell_get_state.c \
 	src/shell/shell/shell_start.c \
 	src/shell/shell/shell_register_child_process.c \
