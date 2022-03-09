@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 06:28:37 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:45:07 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_shell_state
 	int					stdin_backup;
 	int					stdout_backup;
 	enum e_shell_state	state;
+	int					last_signal;
 	pid_t				*_vec_children;
 	int					last_status;
 	char				last_status_string[4];
@@ -52,5 +53,8 @@ shell_register_child_process(pid_t pid);
 
 int
 shell_await_children(void);
+
+bool
+shell_match_last_signal(int signal);
 
 #endif
