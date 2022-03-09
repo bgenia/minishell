@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:00 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 06:42:53 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 23:13:28 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 void
 	handle_signals(int signal)
 {
-	shell_get_state()->last_signal = signal;
 	if (signal == SIGINT)
 	{
 		if (shell_get_state()->state != SHELL_READING_HEREDOC)
@@ -38,10 +37,6 @@ void
 			rl_on_new_line();
 			rl_replace_line("", false);
 			rl_redisplay();
-		}
-		if (shell_get_state()->state == SHELL_READING_HEREDOC)
-		{
-			close(STDIN_FILENO);
 		}
 	}
 	if (signal == SIGQUIT && shell_get_state()->state == SHELL_RUNNING)

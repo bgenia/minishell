@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 07:33:55 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 23:13:02 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int
 		line = readline(
 				"\001" TERM_F_LIGHT_BLUE "\002" "doc> " "\001" TERM_RESET "\002"
 				);
-		if (!line && shell_match_last_signal(SIGINT))
-			ft_dprintf(STDERR_FILENO, _TERM_F_YELLOW
-				"minishell: warning: here-document "
-				"delimited by SIGINT (wanted '%s')\n" _TERM_RESET, name);
-		else if (!line)
+		if (!line)
 			ft_dprintf(STDERR_FILENO, _TERM_F_YELLOW
 				"minishell: warning: here-document "
 				"delimited by end-of-file (wanted '%s')\n" _TERM_RESET, name);

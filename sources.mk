@@ -70,7 +70,6 @@ SRC@src := \
 	src/shell/signals/handle_signals.c \
 	src/shell/signals/register_signal_handlers.c \
 	src/shell/shell/shell_set_last_status.c \
-	src/shell/shell/shell_match_last_signal.c \
 	src/shell/shell/shell_get_state.c \
 	src/shell/shell/shell_start.c \
 	src/shell/shell/shell_increment_level.c \
