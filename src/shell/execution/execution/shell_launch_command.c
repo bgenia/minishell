@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 22:00:46 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 03:56:50 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <minishell/shell/shell.h>
 #include <minishell/shell/execution/execution.h>
 #include <minishell/shell/execution/execution_context.h>
+#include <minishell/shell/execution/redirections.h>
 
 void
 	shell_launch_command(

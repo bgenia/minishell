@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:32:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:28:23 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 03:56:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <minishell/shell/shell.h>
 #include <minishell/shell/execution/execution.h>
 #include <minishell/shell/execution/execution_context.h>
+#include <minishell/shell/execution/redirections.h>
 #include <minishell/shell/shell_utils.h>
 #include <minishell/builtins/builtin_utils.h>
 
