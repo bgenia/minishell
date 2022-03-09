@@ -6,12 +6,14 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:09:10 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:55:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:54:28 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
 # define EXECUTION_H
+
+# include <stdbool.h>
 
 # include <minishell/parser/ast.h>
 # include <minishell/shell/execution/execution_context.h>
@@ -34,7 +36,7 @@ shell_execute_pipeline(t_ast_pipeline *pipeline, t_execution_context *ctx);
 int
 shell_execute_builtin(t_ast_command *command, t_execution_context *ctx);
 
-void
+bool
 shell_launch_command(
 	t_ast_command *command,
 	t_execution_context *ctx,
