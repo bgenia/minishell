@@ -57,20 +57,20 @@ SRC@src := \
 	src/shell/execution/execution_context/execution_context_init.c \
 	src/shell/execution/execution_context/execution_context_get_next_heredoc.c \
 	src/shell/execution/execution_context/execution_context_skip_heredocs.c \
+	src/shell/execution/redirections/shell_apply_redirections.c \
+	src/shell/execution/redirections/shell_read_heredocs.c \
+	src/shell/execution/redirections/shell_clear_heredocs.c \
+	src/shell/execution/redirections/shell_close_redirections.c \
 	src/shell/execution/execution/shell_execute_command.c \
 	src/shell/execution/execution/shell_execute_line.c \
-	src/shell/execution/execution/shell_apply_redirections.c \
 	src/shell/execution/execution/shell_launch_command.c \
 	src/shell/execution/execution/shell_execute_pipeline.c \
 	src/shell/execution/execution/shell_execute_ast.c \
-	src/shell/execution/execution/shell_close_redirections.c \
 	src/shell/execution/execution/shell_execute_builtin.c \
 	src/shell/signals/handle_signals.c \
 	src/shell/signals/register_signal_handlers.c \
 	src/shell/shell/shell_set_last_status.c \
 	src/shell/shell/shell_get_state.c \
-	src/shell/shell/shell_read_heredocs.c \
-	src/shell/shell/shell_clear_heredocs.c \
 	src/shell/shell/shell_start.c \
 	src/shell/shell/shell_register_child_process.c \
 	src/shell/shell/shell_await_children.c \
