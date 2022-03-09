@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:03:29 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 10:43:34 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 15:02:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ bool
 	i = 0;
 	while (identifier[++i])
 	{
-		if (ft_isalnum(identifier[i]) || identifier[i] == '_')
+		if (ft_isalnum(identifier[i])
+			|| identifier[i] == '_'
+			|| identifier[i] == '=')
 			continue ;
 		return (false);
 	}
