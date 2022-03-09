@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 11:06:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void
 	int	file;
 
 	if (redirection->type == REDIR_APPEND)
-		file = open(redirection->file, O_WRONLY | O_APPEND, O_CREAT, 0666);
+		file = open(redirection->file, O_WRONLY | O_APPEND | O_CREAT, 0666);
 	else if (redirection->type == REDIR_OUTPUT)
 		file = open(redirection->file, O_WRONLY | O_CREAT, 0666);
 	else if (redirection->type == REDIR_INPUT)
