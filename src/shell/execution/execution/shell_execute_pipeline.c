@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:19:06 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 10:57:58 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 12:48:04 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int
 	while (i < ft_vector_get_size(pipeline->vec_commands) - 1)
 	{
 		pipe(ctx->current_pipe);
-		if (!shell_launch_command(&pipeline->vec_commands[i], ctx, true, i > 0))
+		if (!shell_launch_command(&pipeline->vec_commands[i], ctx, true))
 			error = true;
 		i++;
 	}
-	if (shell_launch_command(&pipeline->vec_commands[i], ctx, false, i > 0))
+	if (shell_launch_command(&pipeline->vec_commands[i], ctx, false))
 		error = true;
 	dup2(shell_get_state()->stdin_backup, STDIN_FILENO);
 	dup2(shell_get_state()->stdout_backup, STDOUT_FILENO);

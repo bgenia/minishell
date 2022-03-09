@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:09:10 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 10:54:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 12:47:53 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ bool
 shell_launch_command(
 	t_ast_command *command,
 	t_execution_context *ctx,
-	bool has_output_pipe,
-	bool has_input_pipe
+	bool has_output_pipe
 	);
 
 void

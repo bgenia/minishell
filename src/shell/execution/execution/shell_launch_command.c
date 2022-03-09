@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 10:59:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 12:47:40 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 static void
 	_apply_output_pipe(t_execution_context *ctx)
 {
-	close(ctx->current_pipe[0]);
 	dup2(ctx->current_pipe[1], STDOUT_FILENO);
+	close(ctx->current_pipe[0]);
+	close(ctx->current_pipe[1]);
 }
 
 static void
-	_use_output_pipe(t_execution_context *ctx)
+	_redirect_output_pipe(t_execution_context *ctx)
 {
 	dup2(ctx->current_pipe[0], STDIN_FILENO);
 	close(ctx->current_pipe[0]);
@@ -41,8 +42,7 @@ bool
 	shell_launch_command(
 		t_ast_command *command,
 		t_execution_context *ctx,
-		bool has_output_pipe,
-		bool has_input_pipe
+		bool has_output_pipe
 	)
 {
 	pid_t	pid;
@@ -64,8 +64,6 @@ bool
 	shell_register_child_process(pid);
 	execution_context_skip_heredocs(ctx, command);
 	if (has_output_pipe)
-		_use_output_pipe(ctx);
-	if (has_input_pipe)
-		close(STDIN_FILENO);
+		_redirect_output_pipe(ctx);
 	return (true);
 }
