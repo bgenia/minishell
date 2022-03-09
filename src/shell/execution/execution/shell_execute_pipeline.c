@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:19:06 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 12:48:04 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:08:49 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int
 			error = true;
 		i++;
 	}
-	if (shell_launch_command(&pipeline->vec_commands[i], ctx, false))
+	if (!shell_launch_command(&pipeline->vec_commands[i], ctx, false))
 		error = true;
 	dup2(shell_get_state()->stdin_backup, STDIN_FILENO);
 	dup2(shell_get_state()->stdout_backup, STDOUT_FILENO);
