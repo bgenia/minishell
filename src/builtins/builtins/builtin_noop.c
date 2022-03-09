@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   builtin_noop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 19:39:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:45:58 by bgenia           ###   ########.fr       */
+/*   Created: 2022/01/02 19:06:40 by ttanja            #+#    #+#             */
+/*   Updated: 2022/03/09 03:45:46 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
-
-# include <stdbool.h>
-
 int
-builtin_cd(int argc, char **argv);
-
-int
-builtin_export(int argc, char **argv);
-
-int
-builtin_unset(int argc, char **argv);
-
-int
-builtin_exit(int argc, char **argv);
-
-int
-builtin_echo(int argc, char **argv);
-
-int
-builtin_pwd(int argc, char **argv);
-
-int
-builtin_env(int argc, char **argv);
-
-int
-builtin_noop(int argc, char **argv);
-
-#endif
+	builtin_noop(int argc, char **argv)
+{
+	(void)argc, (void)argv;
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:43:34 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:19:38 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 03:48:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 bool
 	is_builtin(char *name)
 {
+	if (!name || ft_streq(name, ":") || ft_streq(name, "true"))
+		return (true);
 	if (ft_streq(name, "echo"))
 		return (true);
 	if (ft_streq(name, "cd"))

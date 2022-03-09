@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:38:11 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:19:33 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 03:48:01 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int
 	int	argc;
 
 	argc = ft_arrlen(argv, sizeof(*argv));
+	if (!name || ft_streq(name, ":") || ft_streq(name, "true"))
+		return (builtin_noop(argc, argv));
 	if (ft_streq(name, "echo"))
 		return (builtin_echo(argc, argv));
 	if (ft_streq(name, "cd"))
