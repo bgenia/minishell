@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 22:59:05 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 04:43:36 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@
 #include <minishell/shell/shell.h>
 
 #include <libft/vector/vector.h>
+
+// FIXME
+static int
+	_process_exit_status(int status)
+{
+	if (WIFSIGNALED(status))
+		return (128 + WTERMSIG(status));
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	return (-1);
+}
 
 int
 	shell_await_children(void)
@@ -34,5 +45,5 @@ int
 	}
 	ft_vector_free(children);
 	shell_get_state()->_vec_children = NULL;
-	return (WEXITSTATUS(status));
+	return (_process_exit_status(status));
 }
