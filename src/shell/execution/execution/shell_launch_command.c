@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 12:47:40 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:34:19 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 static void
 	_apply_output_pipe(t_execution_context *ctx)
 {
-	dup2(ctx->current_pipe[1], STDOUT_FILENO);
 	close(ctx->current_pipe[0]);
+	dup2(ctx->current_pipe[1], STDOUT_FILENO);
 	close(ctx->current_pipe[1]);
 }
 
@@ -61,7 +61,7 @@ bool
 		shell_apply_redirections(command, ctx);
 		shell_execute_command(command);
 	}
-	shell_register_child_process(pid);
+	shell_get_state()->last_child = pid;
 	execution_context_skip_heredocs(ctx, command);
 	if (has_output_pipe)
 		_redirect_output_pipe(ctx);

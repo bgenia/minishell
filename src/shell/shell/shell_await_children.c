@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 04:43:36 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:40:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,12 @@ static int
 int
 	shell_await_children(void)
 {
-	pid_t	*children;
-	size_t	i;
-	int		status;
+	int	status;
+	int	result;
 
-	children = shell_get_state()->_vec_children;
-	i = 0;
-	while (i < ft_vector_get_size(children))
-	{
-		waitpid(children[i], &status, 0);
-		i++;
-	}
-	ft_vector_free(children);
-	shell_get_state()->_vec_children = NULL;
+	waitpid(shell_get_state()->last_child, &status, 0);
+	result = 1;
+	while (result > 0)
+		result = waitpid(-1, NULL, 0);
 	return (_process_exit_status(status));
 }
