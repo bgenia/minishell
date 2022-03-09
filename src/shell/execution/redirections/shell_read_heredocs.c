@@ -6,15 +6,15 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 02:51:28 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 06:25:24 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:34:58 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/vector/vector.h>
 
 #include <minishell/parser/ast.h>
-#include <minishell/shell/shell_utils.h>
 #include <minishell/shell/execution/execution_context.h>
+#include <minishell/shell/execution/redirections.h>
 
 void
 	shell_read_heredocs(t_ast *ast, t_execution_context *ctx)

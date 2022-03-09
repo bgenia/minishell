@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:46:59 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 23:02:45 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:29:16 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_shell_state
 	*shell_get_state(void)
 {
 	static t_shell_state	shell_state = (t_shell_state){
-		.is_running = false,
+		.state = SHELL_WAITING,
 		.stdin_backup = -1,
 		.stdout_backup = -1,
 		._vec_children = NULL,

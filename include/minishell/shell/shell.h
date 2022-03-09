@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:55:26 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:28:37 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,21 @@
 
 # include <libft/terminal/termdefs.h>
 
+enum e_shell_state
+{
+	SHELL_WAITING,
+	SHELL_READING_HEREDOC,
+	SHELL_RUNNING
+};
+
 typedef struct s_shell_state
 {
-	int		stdin_backup;
-	int		stdout_backup;
-	bool	is_running;
-	pid_t	*_vec_children;
-	int		last_status;
-	char	last_status_string[4];
+	int					stdin_backup;
+	int					stdout_backup;
+	enum e_shell_state	state;
+	pid_t				*_vec_children;
+	int					last_status;
+	char				last_status_string[4];
 }	t_shell_state;
 
 t_shell_state

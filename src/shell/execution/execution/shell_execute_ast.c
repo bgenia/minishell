@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:32:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 03:56:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/09 06:30:27 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void
 	t_execution_context	ctx;
 	int					status;
 
-	shell_get_state()->is_running = true;
 	execution_context_init(&ctx, ast);
+	shell_get_state()->state = SHELL_READING_HEREDOC;
 	shell_read_heredocs(ast, &ctx);
+	shell_get_state()->state = SHELL_RUNNING;
 	if (_is_only_command(&ctx)
 		&& is_builtin_command(&ast->pipeline.vec_commands[0]))
 		status = shell_execute_builtin(&ast->pipeline.vec_commands[0], &ctx);
@@ -46,5 +47,5 @@ void
 		status = shell_execute_pipeline(&ast->pipeline, &ctx);
 	shell_set_last_status(status);
 	shell_clear_heredocs(&ctx);
-	shell_get_state()->is_running = false;
+	shell_get_state()->state = SHELL_WAITING;
 }
