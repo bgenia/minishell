@@ -19,30 +19,21 @@ MODIFIERS := use_colors no_colors
 include maketools/modifiers.mk
 
 ifdef MODIFIERS[use_colors]
-
-CPPFLAGS += -DUSE_COLORS
-
+    CPPFLAGS += -DUSE_COLORS
 endif
 
 ifdef MODIFIERS[no_colors]
-
-CPPFLAGS += -DNO_COLORS
-
+    CPPFLAGS += -DNO_COLORS
 endif
 
-ifndef DEBUG_MODE
-
-export FT_OPTIONS := FT_MALLOC_EXIT
-
-$(call add_library,lib/libft/libft.a,lib/libft/include)
-
+ifdef DEBUG_MODE
+    export FT_OPTIONS := FT_MALLOC_ABORT
+    FT_TARGET := debug
 else
-
-export FT_OPTIONS := FT_MALLOC_ABORT
-
-$(call add_library,lib/libft/libft.a,lib/libft/include,,debug)
-
+    export FT_OPTIONS := FT_MALLOC_EXIT
 endif
+
+$(call add_library,lib/libft/libft.a,lib/libft/include,$(FT_TARGET))
 
 include maketools/common_rules.mk
 
