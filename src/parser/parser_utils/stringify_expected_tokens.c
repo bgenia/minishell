@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:26:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/07 16:03:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:54:42 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,28 @@ const static char	*g_token_types[] = {
 [TOKEN_EOF] = "an EOF"
 };
 
+static char
+	*_stringify_token_groups(t_token_type *expected)
+{
+	char	*result;
+
+	result = NULL;
+	if (*expected & TOKEN_REDIR)
+	{
+		*expected ^= TOKEN_REDIR;
+		result = ft_strdup("a redirection");
+	}
+	return (result);
+}
+
 char
 	*stringify_expected_tokens(t_token_type expected)
 {
 	char	*result;
 	int		i;
 
-	result = NULL;
+
+	result = _stringify_token_groups(&expected);
 	i = TOKEN_PIPE;
 	while (i <= TOKEN_EOF)
 	{
