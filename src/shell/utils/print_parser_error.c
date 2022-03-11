@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:42:10 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 07:11:38 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,20 @@ void
 	}
 	ft_dprintf(STDERR_FILENO, _TERM_F_RED
 		"minishell: syntax error near unexpected token '%s'\n> " _TERM_RESET
-		"%s\n  ", parser->error_info.got.value, source);
+		"%s\n  " _TERM_F_RED, parser->error_info.got.value, source);
 	i = 0;
 	while (i < parser->error_info.got.position)
 	{
 		ft_dprintf(STDERR_FILENO, " ");
 		i++;
 	}
-	ft_dprintf(STDERR_FILENO,
-		_TERM_F_RED "^--- expected %S\n" _TERM_RESET,
+	ft_dprintf(STDERR_FILENO, "^");
+	i = 1;
+	while (i < parser->error_info.got.length)
+	{
+		ft_dprintf(STDERR_FILENO, "^");
+		i++;
+	}
+	ft_dprintf(STDERR_FILENO, "--- expected %S\n" _TERM_RESET,
 		stringify_expected_tokens(parser->error_info.expected));
 }
