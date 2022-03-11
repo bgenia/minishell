@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:32:19 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:16:48 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:11:50 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,7 @@ t_parser_status
 	char	*source;
 
 	if (!parser_consume(parser, TOKEN_RHD | TOKEN_RL | TOKEN_RR | TOKEN_RRA))
-	{
-		parser->error_info = (t_parser_error_info){
-			.expected = TOKEN_RHD | TOKEN_RL | TOKEN_RR | TOKEN_RRA,
-			.got = parser_peek(parser, 0)
-		};
-		return (parser_set_status(parser, PARSER_ERROR_BAD_SYNTAX));
-	}
+		return (parser->status);
 	redirection = parser_peek(parser, -1);
 	if (parser_parse_word(parser, &source) != PARSER_OK)
 		return (parser->status);

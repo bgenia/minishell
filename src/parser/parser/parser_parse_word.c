@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:42:48 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:16:50 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:12:11 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_parser_status
 	t_token	word;
 
 	word = parser_peek(parser, 0);
-	parser_consume(parser, TOKEN_WORD);
+	if (!parser_consume(parser, TOKEN_WORD))
+		return (parser->status);
 	if (parser->status != PARSER_OK)
 		return (parser->status);
 	*result = ft_strdup(word.value);
