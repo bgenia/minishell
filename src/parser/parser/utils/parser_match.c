@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:32:49 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:17:07 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:22:27 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ bool
 		parser_skip(parser, 1);
 		return (true);
 	}
+	parser->expected_token |= type;
 	return (false);
 }

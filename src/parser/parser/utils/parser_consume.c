@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:35:08 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:17:02 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:20:13 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ bool
 	{
 		parser_set_status(parser, PARSER_ERROR_BAD_SYNTAX);
 		parser->error_info = (t_parser_error_info){
-			.expected = type,
+			.expected = parser->expected_token,
 			.got = parser_peek(parser, 0)
 		};
 		return (false);
 	}
+	parser->expected_token = 0;
 	return (true);
 }

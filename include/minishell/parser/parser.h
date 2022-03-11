@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:50:21 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:06:19 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:26:50 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_parser
 	size_t				position;
 	size_t				length;
 	t_ast				*ast;
+	t_token_type		expected_token;
 	t_parser_status		status;
 	t_parser_error_info	error_info;
 }	t_parser;
@@ -68,6 +69,8 @@ bool
 parser_is_end(t_parser *parser);
 bool
 parser_match(t_parser *parser, t_token_type type);
+bool
+parser_try_match(t_parser *parser, int offset, t_token_type type);
 bool
 parser_consume(t_parser *parser, t_token_type type);
 
