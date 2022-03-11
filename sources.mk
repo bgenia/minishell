@@ -42,6 +42,7 @@ SRC@src := \
 	src/parser/parser/parser_parse_command.c \
 	src/parser/parser/base/parser_create.c \
 	src/parser/parser/utils/parser_is_end.c \
+	src/parser/parser/utils/parser_try_match.c \
 	src/parser/parser/utils/parser_set_status.c \
 	src/parser/parser/utils/parser_peek.c \
 	src/parser/parser/utils/parser_skip.c \
