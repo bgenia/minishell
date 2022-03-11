@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:06:58 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/08 21:08:53 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:34:34 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ typedef struct s_execution_context
 
 void
 execution_context_init(t_execution_context *ctx, t_ast *ast);
-
 int
 execution_context_get_next_heredoc(t_execution_context *ctx);
-
 void
 execution_context_skip_heredocs(
 	t_execution_context *ctx,

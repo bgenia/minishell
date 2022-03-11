@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/10 09:40:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:34:03 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,12 @@ typedef struct s_shell_state
 
 t_shell_state
 *shell_get_state(void);
-
 void
 shell_set_last_status(int status);
-
 void
 shell_start(void);
-
 int
 shell_await_children(void);
-
 void
 shell_increment_level(void);
 

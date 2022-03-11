@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:18:39 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 06:25:38 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:34:08 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef enum e_command_status
 
 void
 print_lexer_error(t_lexer *lexer);
-
 void
 print_parser_error(t_parser *parser, char *source);
 

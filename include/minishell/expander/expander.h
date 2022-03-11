@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:05:11 by bgenia            #+#    #+#             */
-/*   Updated: 2021/11/14 19:20:05 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/11 06:34:57 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 
 void
 expand_env_variables(char **source);
-
 void
 expand_tokens(t_token *vec_tokens);
-
 void
 expand_executables(t_ast *ast);
 
