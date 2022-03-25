@@ -66,3 +66,6 @@ minishell
 
 # Logs
 *.log
+
+# Test files
+*.test
