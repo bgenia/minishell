@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 09:06:20 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 10:38:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:08:22 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int
 	{
 		if (!validate_env_identifier(argv[i]))
 		{
-			ft_dprintf(STDERR_FILENO, _TERM_F_RED
-				"minishell: unset: '%s': not a valid identifier\n" _TERM_RESET,
-				argv[i]);
+			ft_dprintf(STDERR_FILENO, "%sminishell: unset: '%s': not a valid "
+				"identifier\n" TERM_RESET, shell_colorize(TERM_F_RED), argv[i]);
 			status = 1;
 		}
 		else

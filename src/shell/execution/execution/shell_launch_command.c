@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:58:44 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:40:33 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ bool
 	pid = fork();
 	if (pid == -1)
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED "minishell: %s: unable to fork "
-			"process\n" _TERM_RESET, command->vec_argv[0]);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: unable to fork process\n%s",
+			shell_colorize(TERM_F_RED), command->vec_argv[0],
+			shell_colorize(TERM_RESET));
 		return (false);
 	}
 	if (pid == 0)

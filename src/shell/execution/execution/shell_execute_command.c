@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:34:30 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:40:17 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,32 @@ static void
 {
 	if (ft_strchr(command->vec_argv[0], '/'))
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: no such file or directory\n" _TERM_RESET,
-			command->vec_argv[0]);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: no such file or directory\n"
+			"%s", shell_colorize(TERM_F_RED), command->vec_argv[0],
+			shell_colorize(TERM_RESET));
 	}
 	else
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: command not found\n" _TERM_RESET,
-			command->vec_argv[0]);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: command not found\n%s",
+			shell_colorize(TERM_F_RED), command->vec_argv[0],
+			shell_colorize(TERM_RESET));
 	}
 }
 
 static void
 	_display_missing_permissions_error(t_ast_command *command)
 {
-	ft_dprintf(STDERR_FILENO, _TERM_F_RED
-		"minishell: %s: permission denied\n" _TERM_RESET,
-		command->vec_argv[0]);
+	ft_dprintf(STDERR_FILENO, "%sminishell: %s: permission denied\n%s",
+		shell_colorize(TERM_F_RED), command->vec_argv[0],
+		shell_colorize(TERM_RESET));
 }
 
 static void
 	_display_unknown_execution_error(t_ast_command *command)
 {
-	ft_dprintf(STDERR_FILENO, _TERM_F_RED
-		"minishell: %s: execution failed\n" _TERM_RESET,
-		command->vec_argv[0]);
+	ft_dprintf(STDERR_FILENO, "%sminishell: %s: execution failed\n%s",
+		shell_colorize(TERM_F_RED), command->vec_argv[0],
+		shell_colorize(TERM_RESET));
 }
 
 void

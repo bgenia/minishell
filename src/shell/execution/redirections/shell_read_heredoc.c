@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 23:13:02 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:42:13 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int
 				"\001" TERM_F_LIGHT_BLUE "\002" "doc> " "\001" TERM_RESET "\002"
 				);
 		if (!line)
-			ft_dprintf(STDERR_FILENO, _TERM_F_YELLOW
-				"minishell: warning: here-document "
-				"delimited by end-of-file (wanted '%s')\n" _TERM_RESET, name);
+			ft_dprintf(STDERR_FILENO, "%sminishell: warning: here-document "
+				"delimited by end-of-file (wanted '%s')\n%s",
+				shell_colorize(TERM_F_YELLOW), name,
+				shell_colorize(TERM_RESET));
 		if (!line || ft_streq(line, name))
 			break ;
 		ft_dprintf(_pipe[1], "%s\n", line);

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 14:52:09 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:38:10 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int
 
 	if (argc > 2)
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: cd: too many arguments\n" _TERM_RESET);
+		ft_dprintf(STDERR_FILENO, "%sminishell: cd: too many arguments\n%s",
+			shell_colorize(TERM_F_RED), shell_colorize(TERM_RESET));
 		return (2);
 	}
 	dir = NULL;
@@ -37,8 +37,9 @@ int
 		dir = argv[1];
 	if (chdir(dir) != 0)
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: cd: %s: No such file or directory\n" _TERM_RESET, dir);
+		ft_dprintf(STDERR_FILENO, "%sminishell: cd: %s: No such file or"
+			" directory\n%s", shell_colorize(TERM_F_RED), dir,
+			shell_colorize(TERM_RESET));
 		return (1);
 	}
 	if (getcwd(buffer, 1024))

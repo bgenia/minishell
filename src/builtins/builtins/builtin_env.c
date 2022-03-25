@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/09 14:52:07 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:38:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int
 	(void)argv;
 	if (argc > 1)
 	{
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: env: too many arguments\n" _TERM_RESET);
+		ft_dprintf(STDERR_FILENO, "%sminishell: env: too many arguments\n%s",
+			shell_colorize(TERM_F_RED), shell_colorize(TERM_RESET));
 		return (2);
 	}
 	i = 0;

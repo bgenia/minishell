@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 21:15:05 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:41:38 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,20 @@ static void
 	_handle_redirection_error(t_ast_redirection *redirection)
 {
 	if (errno == EISDIR)
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: is a directiory\n" _TERM_RESET,
-			redirection->file);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: is a directiory\n%s",
+			shell_colorize(TERM_F_RED), redirection->file,
+			shell_colorize(TERM_RESET));
 	else if (errno == EACCES)
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: permission denied\n" _TERM_RESET,
-			redirection->file);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: permission denied\n%s",
+			shell_colorize(TERM_F_RED), redirection->file,
+			shell_colorize(TERM_RESET));
 	else if (errno == ENOENT)
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: no such file or directory\n" _TERM_RESET,
-			redirection->file, errno);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: no such file or directory\n"
+			"%s", redirection->file, errno, shell_colorize(TERM_RESET));
 	else
-		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: ambigous redirect\n" _TERM_RESET,
-			redirection->file);
+		ft_dprintf(STDERR_FILENO, "%sminishell: %s: ambigous redirect\n%s",
+			shell_colorize(TERM_F_RED), redirection->file,
+			shell_colorize(TERM_RESET));
 	exit(EXIT_FAILURE);
 }
 
