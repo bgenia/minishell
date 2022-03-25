@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 15:10:43 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/03/25 21:15:05 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static void
 		redirection->fd = STDIN_FILENO;
 }
 
+// Does not detect ambigous redirects like bash, it's just a placeholder
 static void
-	_print_open_error(t_ast_redirection *redirection)
+	_handle_redirection_error(t_ast_redirection *redirection)
 {
 	if (errno == EISDIR)
 		ft_dprintf(STDERR_FILENO, _TERM_F_RED
@@ -46,10 +47,15 @@ static void
 		ft_dprintf(STDERR_FILENO, _TERM_F_RED
 			"minishell: %s: permission denied\n" _TERM_RESET,
 			redirection->file);
+	else if (errno == ENOENT)
+		ft_dprintf(STDERR_FILENO, _TERM_F_RED
+			"minishell: %s: no such file or directory\n" _TERM_RESET,
+			redirection->file, errno);
 	else
 		ft_dprintf(STDERR_FILENO, _TERM_F_RED
-			"minishell: %s: unable to perform redirection\n" _TERM_RESET,
+			"minishell: %s: ambigous redirect\n" _TERM_RESET,
 			redirection->file);
+	exit(EXIT_FAILURE);
 }
 
 static void
@@ -66,7 +72,7 @@ static void
 	else
 		file = execution_context_get_next_heredoc(ctx);
 	if (file == -1)
-		_print_open_error(redirection);
+		_handle_redirection_error(redirection);
 	else
 		dup2(file, redirection->fd);
 }
