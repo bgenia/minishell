@@ -51,9 +51,11 @@ SRC@src := \
 	src/parser/parser/parser_parse_word.c \
 	src/parser/parser/parser_parse.c \
 	src/parser/parser/parser_parse_pipeline.c \
-	src/shell/utils/parse_command.c \
-	src/shell/utils/print_lexer_error.c \
-	src/shell/utils/print_parser_error.c \
+	src/shell/shell_utils/parse_command.c \
+	src/shell/shell_utils/print_many.c \
+	src/shell/shell_utils/print_lexer_error.c \
+	src/shell/shell_utils/print_parser_error.c \
+	src/shell/shell_colors/shell_colorize.c \
 	src/shell/execution/execution_context/execution_context_init.c \
 	src/shell/execution/execution_context/execution_context_get_next_heredoc.c \
 	src/shell/execution/execution_context/execution_context_skip_heredocs.c \
