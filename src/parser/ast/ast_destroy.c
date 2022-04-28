@@ -6,13 +6,13 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:46:30 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:16:21 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include <libft/vector/vector.h>
+#include <ft/vector/vector.h>
 
 #include <minishell/parser/ast.h>
 

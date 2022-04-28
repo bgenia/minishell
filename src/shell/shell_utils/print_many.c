@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/io/printf.h>
+#include <ft/io/printf.h>
 
 void
 	print_many(int fd, char c, size_t amount)

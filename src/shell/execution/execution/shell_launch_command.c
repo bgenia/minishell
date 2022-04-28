@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:40:33 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <minishell/shell/execution/redirections.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/io/printf.h>
+#include <ft/io/printf.h>
 
 static void
 	_apply_output_pipe(t_execution_context *ctx)

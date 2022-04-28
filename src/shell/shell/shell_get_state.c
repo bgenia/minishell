@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:46:59 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/10 09:42:20 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
-#include <libft/convert.h>
+#include <ft/process/env.h>
+#include <ft/convert.h>
 
 t_shell_state
 	*shell_get_state(void)

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:40:03 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:53:01 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <minishell/shell/shell_colors.h>
 #include <minishell/shell/shell_utils.h>
 
-#include <libft/io/printf.h>
+#include <ft/io/printf.h>
 
 void
 	print_lexer_error(t_lexer *lexer)

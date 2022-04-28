@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:00 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 23:13:28 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include <minishell/shell/shell.h>
 #include <minishell/shell/signals.h>
 
-#include <libft/io/printf.h>
-#include <libft/vector/vector.h>
+#include <ft/io/printf.h>
+#include <ft/vector/vector.h>
 
 #include <readline/readline.h>
 

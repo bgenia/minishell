@@ -6,13 +6,13 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:03:29 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/11 05:41:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 
-#include <libft/ctype.h>
+#include <ft/ctype.h>
 
 bool
 	validate_env_identifier(char *identifier)

@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:19:06 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:08:49 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <minishell/shell/execution/execution.h>
 #include <minishell/shell/execution/execution_context.h>
 
-#include <libft/vector/vector.h>
+#include <ft/vector/vector.h>
 
 int
 	shell_execute_pipeline(t_ast_pipeline *pipeline, t_execution_context *ctx)

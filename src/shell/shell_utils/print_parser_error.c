@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:42:10 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:52:53 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <minishell/shell/shell_colors.h>
 #include <minishell/shell/shell_utils.h>
 
-#include <libft/io/printf.h>
-#include <libft/string/string.h>
-#include <libft/math.h>
+#include <ft/io/printf.h>
+#include <ft/string/string.h>
+#include <ft/math.h>
 
 void
 	print_parser_error(t_parser *parser, char *source)

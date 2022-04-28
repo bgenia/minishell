@@ -6,14 +6,14 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:20:07 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/25 22:38:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/io/printf.h>
-#include <libft/system/env.h>
+#include <ft/io/printf.h>
+#include <ft/process/env.h>
 
 int
 	builtin_env(int argc, char **argv)

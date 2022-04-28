@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:36:55 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:39:16 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <minishell/builtins/builtin_utils.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/string/string.h>
-#include <libft/memory/memory.h>
-#include <libft/system/env.h>
-#include <libft/io/printf.h>
-#include <libft/array.h>
+#include <ft/string/string.h>
+#include <ft/memory/memory.h>
+#include <ft/process/env.h>
+#include <ft/io/printf.h>
+#include <ft/array.h>
 
 static int
 	_string_comparator(char **a, char **b, void *arg, size_t element_size)

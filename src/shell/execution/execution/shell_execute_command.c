@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:40:17 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <minishell/builtins/builtin_utils.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/system/env.h>
-#include <libft/io/printf.h>
-#include <libft/string/string.h>
+#include <ft/process/env.h>
+#include <ft/io/printf.h>
+#include <ft/string/string.h>
 
 static void
 	_display_missing_file_error(t_ast_command *command)

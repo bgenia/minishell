@@ -6,12 +6,12 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:26:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/11 06:54:42 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/string/string.h>
-#include <libft/string/format.h>
+#include <ft/string/string.h>
+#include <ft/string/format.h>
 
 #include <minishell/parser/parser_utils.h>
 #include <minishell/lexer/token.h>

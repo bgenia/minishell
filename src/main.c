@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:33:42 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <minishell/shell/signals.h>
 #include <minishell/shell/shell.h>
 
-#include <libft/system/env.h>
-#include <libft/string/string.h>
-#include <libft/system/env.h>
+#include <ft/process/env.h>
+#include <ft/string/string.h>
+#include <ft/process/env.h>
 
 #include <readline/readline.h>
 

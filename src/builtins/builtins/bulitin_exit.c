@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:47:24 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/25 22:38:55 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/ctype.h>
-#include <libft/convert.h>
-#include <libft/io/printf.h>
+#include <ft/ctype.h>
+#include <ft/convert.h>
+#include <ft/io/printf.h>
 
 static bool
 	_parse_exit_code(char *str, intmax_t *result)

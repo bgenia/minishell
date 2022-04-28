@@ -6,16 +6,16 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 18:38:17 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:19:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <libft/string/string.h>
-#include <libft/string/format.h>
-#include <libft/system/env.h>
+#include <ft/string/string.h>
+#include <ft/string/format.h>
+#include <ft/process/env.h>
 
 static char
 	*_dup_if_executable(char *path)

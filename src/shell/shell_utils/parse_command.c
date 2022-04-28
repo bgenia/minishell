@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 07:22:57 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include <minishell/shell/shell_utils.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/io/printf.h>
-#include <libft/vector/vector.h>
-#include <libft/system/env.h>
-#include <libft/string/string.h>
+#include <ft/io/printf.h>
+#include <ft/vector/vector.h>
+#include <ft/process/env.h>
+#include <ft/string/string.h>
 
 static void
 	_free_tokens(t_token *vec_tokens)

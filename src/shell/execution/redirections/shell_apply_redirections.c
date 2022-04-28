@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:53:45 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:41:38 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 #include <minishell/shell/execution/execution_context.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/vector/vector.h>
-#include <libft/io/printf.h>
+#include <ft/vector/vector.h>
+#include <ft/io/printf.h>
 
 static void
 	_normalize_redirection_fd(t_ast_redirection *redirection)

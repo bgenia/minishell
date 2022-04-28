@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 04:36:03 by ttanja            #+#    #+#             */
-/*   Updated: 2022/03/25 22:42:13 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 #include <minishell/shell/shell.h>
 #include <minishell/shell/shell_colors.h>
 
-#include <libft/string/string.h>
-#include <libft/memory/memory.h>
-#include <libft/io/printf.h>
+#include <ft/string/string.h>
+#include <ft/memory/memory.h>
+#include <ft/io/printf.h>
 
 #include <readline/readline.h>
 

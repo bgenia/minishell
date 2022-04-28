@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 00:32:24 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 06:30:27 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 #include <minishell/shell/shell_utils.h>
 #include <minishell/builtins/builtin_utils.h>
 
-#include <libft/vector/vector.h>
-#include <libft/system/env.h>
-#include <libft/string/format.h>
+#include <ft/vector/vector.h>
+#include <ft/process/env.h>
+#include <ft/string/format.h>
 
 static bool
 	_is_only_command(t_execution_context *ctx)

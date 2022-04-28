@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:19:40 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 02:19:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <minishell/expander/expander.h>
 #include <minishell/shell/shell.h>
 
-#include <libft/string/string.h>
-#include <libft/string/format.h>
-#include <libft/memory/memory.h>
-#include <libft/system/env.h>
+#include <ft/string/string.h>
+#include <ft/string/format.h>
+#include <ft/memory/memory.h>
+#include <ft/process/env.h>
 
 static char
 	*_get_ph_value(t_var_placeholder *ph, char *source)

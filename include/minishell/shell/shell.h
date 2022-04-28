@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:12:42 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/11 06:34:03 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <minishell/parser/ast.h>
 # include <minishell/shell/execution/execution_context.h>
 
-# include <libft/terminal/termdefs.h>
+# include <ft/terminal/termdefs.h>
 
 enum e_shell_state
 {
