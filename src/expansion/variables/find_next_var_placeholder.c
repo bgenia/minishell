@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 18:11:02 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/29 19:52:48 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <ft/string/string.h>
 #include <ft/ctype.h>
 
-#include <minishell/expander/expander.h>
+#include <minishell/expansion/variables.h>
 
 static bool
 	_is_placeholder_delimiter(char c)

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_env_variables.c                             :+:      :+:    :+:   */
+/*   string_expand_variables.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/31 18:19:40 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
+/*   Created: 2022/04/29 19:40:56 by bgenia            #+#    #+#             */
+/*   Updated: 2022/04/29 19:53:14 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include <stdlib.h>
 
-#include <minishell/expander/expander.h>
+#include <minishell/expansion/variables.h>
 #include <minishell/shell/shell.h>
 
-#include <ft/string/string.h>
 #include <ft/string/format.h>
-#include <ft/memory/memory.h>
+#include <ft/string/string.h>
 #include <ft/process/env.h>
+#include <ft/memory/memory.h>
 
 static char
 	*_get_ph_value(t_var_placeholder *ph, char *source)
@@ -55,7 +54,7 @@ static char
 }
 
 void
-	expand_env_variables(char **source)
+	string_expand_variables(char **source)
 {
 	t_var_placeholder	ph;
 	char				*ph_value;
