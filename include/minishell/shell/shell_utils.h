@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:18:39 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/25 22:51:15 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/29 19:45:34 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ print_parser_error(t_parser *parser, char *source);
 
 t_command_status
 parse_command(char *source, t_ast *result);
+
+char
+*get_path_executable(char *path);
 
 #endif
