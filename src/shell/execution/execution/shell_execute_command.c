@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/29 19:52:17 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <minishell/parser/ast.h>
 #include <minishell/builtins/builtin_utils.h>
 #include <minishell/shell/shell_colors.h>
+#include <minishell/shell/shell_utils.h>
 
 #include <ft/process/env.h>
 #include <ft/io/printf.h>
@@ -57,19 +58,22 @@ static void
 void
 	shell_execute_command(t_ast_command *command)
 {
+	char	*executable;
+
 	if (is_builtin(command->vec_argv[0]))
 		exit(exec_builtin(command->vec_argv[0], command->vec_argv));
-	if (access(command->vec_argv[0], F_OK))
+	executable = get_path_executable(command->vec_argv[0]);
+	if (!executable || access(executable, F_OK))
 	{
 		_display_missing_file_error(command);
 		exit(127);
 	}
-	if (access(command->vec_argv[0], X_OK))
+	if (access(executable, X_OK))
 	{
 		_display_missing_permissions_error(command);
 		exit(126);
 	}
-	execve(command->vec_argv[0], command->vec_argv, environ);
+	execve(executable, command->vec_argv, environ);
 	_display_unknown_execution_error(command);
 	exit(-1);
 }

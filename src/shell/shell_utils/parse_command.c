@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:29:18 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:55 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/04/29 19:52:40 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include <minishell/parser/ast.h>
 #include <minishell/parser/parser.h>
 #include <minishell/parser/parser_utils.h>
-#include <minishell/expander/expander.h>
-#include <minishell/preparser/preparser.h>
+#include <minishell/expansion/expansion.h>
 #include <minishell/shell/shell_utils.h>
 #include <minishell/shell/shell_colors.h>
 
@@ -51,8 +50,7 @@ t_command_status
 		_free_tokens(vec_tokens);
 		return (COMMAND_LEXER_ERROR);
 	}
-	expand_tokens(vec_tokens);
-	preparse(&vec_tokens);
+	apply_expansions(&vec_tokens);
 	parser = parser_create(result);
 	if (parser_parse(&parser, vec_tokens) != PARSER_OK)
 	{
@@ -61,6 +59,5 @@ t_command_status
 		return (COMMAND_PARSER_ERROR);
 	}
 	_free_tokens(vec_tokens);
-	expand_executables(result);
 	return (COMMAND_OK);
 }
