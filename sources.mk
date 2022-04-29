@@ -1,13 +1,11 @@
 SRC@src := \
-	src/preparser/remove_whitespaces.c \
-	src/preparser/merge_adjacent_words.c \
-	src/preparser/split_simple_words.c \
-	src/preparser/preparse.c \
-	src/expander/find_next_var_placeholder.c \
-	src/expander/expand_executables.c \
-	src/expander/get_executable.c \
-	src/expander/expand_tokens.c \
-	src/expander/expand_env_variables.c \
+	src/expansion/expansion/expand_variables.c \
+	src/expansion/expansion/remove_whitespaces.c \
+	src/expansion/expansion/merge_adjacent_words.c \
+	src/expansion/expansion/apply_expansions.c \
+	src/expansion/expansion/split_simple_words.c \
+	src/expansion/variables/string_expand_variables.c \
+	src/expansion/variables/find_next_var_placeholder.c \
 	src/lexer/lexer_utils/is_redirection_char.c \
 	src/lexer/lexer_utils/is_word_delimiter.c \
 	src/lexer/lexer_utils/is_quote.c \
@@ -53,6 +51,7 @@ SRC@src := \
 	src/parser/parser/parser_parse_pipeline.c \
 	src/shell/shell_utils/parse_command.c \
 	src/shell/shell_utils/print_many.c \
+	src/shell/shell_utils/get_path_executable.c \
 	src/shell/shell_utils/print_lexer_error.c \
 	src/shell/shell_utils/print_parser_error.c \
 	src/shell/shell_colors/shell_colorize.c \
