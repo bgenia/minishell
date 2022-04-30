@@ -14,18 +14,6 @@ $(NAME): $(OBJ)
 
 LDLIBS += -lreadline
 
-MODIFIERS := use_colors no_colors
-
-include maketools/modifiers.mk
-
-ifdef MODIFIERS[use_colors]
-    CPPFLAGS += -DUSE_COLORS
-endif
-
-ifdef MODIFIERS[no_colors]
-    CPPFLAGS += -DNO_COLORS
-endif
-
 ifdef DEBUG_MODE
     export FT_OPTIONS := FT_MALLOC_ABORT
     FT_TARGET := debug
@@ -38,11 +26,3 @@ $(call add_library,lib/libft/libft.a,lib/libft/include,$(FT_TARGET))
 include maketools/common_rules.mk
 
 -include $(OBJ:.o=.d)
-
-define .HELP_MESSAGE
-$(_MKT_COMMON_HELP_MESSAGE)
-Additional modifiers:
-    use_colors  - Use colored error/warning messages
-    no_colors   - Disable colored prompts
-
-endef
