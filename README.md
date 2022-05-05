@@ -25,3 +25,13 @@ Use `make help` for build instructions. (GNU Make 4.2.1+ required)
 
     ![Default errors](assets/screenshots/default_error.png)
     ![Detailed errors](assets/screenshots/detailed_error.png)
+
+* Implicit cat:
+
+    Use `/usr/bin/cat` instead of no-op when no command is specified (zsh feature).
+
+    Enable: `-i` (`--implicit-cat`) or `export MSH_USE_IMPLICIT_CAT`  
+    Disable: `unset MSH_USE_IMPLICIT_CAT`
+
+    ![Default no-op](assets/screenshots/default_noop.png)
+    ![Implicit cat](assets/screenshots/implicit_cat.png)
