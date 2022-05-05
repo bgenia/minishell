@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/29 20:23:17 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/05 17:38:59 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void
 			ft_setenv("MSH_USE_COLORS", "1", true);
 		if (ft_streq(argv[i], "-e") || ft_streq(argv[i], "--detailed-errors"))
 			ft_setenv("MSH_USE_DETAILED_ERRORS", "1", true);
+		if (ft_streq(argv[i], "-i") || ft_streq(argv[i], "--implicit-cat"))
+			ft_setenv("MSH_USE_IMPLICIT_CAT", "1", true);
 		i++;
 	}
 }

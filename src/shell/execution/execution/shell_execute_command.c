@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:56:41 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/29 19:52:17 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/05 17:38:20 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,27 @@ static void
 		shell_colorize(TERM_RESET));
 }
 
+static int
+	_execute_implicit(void)
+{
+	char	**argv;
+
+	if (ft_getenv("MSH_USE_IMPLICIT_CAT"))
+	{
+		argv = (char *[]){"cat", NULL};
+		return (execve("/usr/bin/cat", argv, environ));
+	}
+	argv = (char *[]){NULL};
+	return (exec_builtin(NULL, argv));
+}
+
 void
 	shell_execute_command(t_ast_command *command)
 {
 	char	*executable;
 
+	if (!command->vec_argv[0])
+		exit(_execute_implicit());
 	if (is_builtin(command->vec_argv[0]))
 		exit(exec_builtin(command->vec_argv[0], command->vec_argv));
 	executable = get_path_executable(command->vec_argv[0]);
