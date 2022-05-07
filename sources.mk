@@ -72,8 +72,8 @@ SRC@src := \
 	src/shell/signals/register_default_signal_handlers.c \
 	src/shell/signals/ignore_signals.c \
 	src/shell/signals/handle_sigquit.c \
+	src/shell/signals/register_shell_signal_handlers.c \
 	src/shell/signals/handle_sigint.c \
-	src/shell/signals/register_custom_signal_handlers.c \
 	src/shell/shell/shell_set_last_status.c \
 	src/shell/shell/shell_get_state.c \
 	src/shell/shell/shell_start.c \
