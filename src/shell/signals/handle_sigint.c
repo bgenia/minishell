@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   register_signal_handlers.c                         :+:      :+:    :+:   */
+/*   handle_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 18:24:37 by bgenia            #+#    #+#             */
-/*   Updated: 2022/03/09 13:57:50 by bgenia           ###   ########.fr       */
+/*   Created: 2022/05/07 18:50:59 by bgenia            #+#    #+#             */
+/*   Updated: 2022/05/07 19:06:41 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdio.h>
 #include <signal.h>
+#include <stdbool.h>
 
-#include <minishell/shell/signals.h>
+#include <minishell/shell/shell.h>
+#include <ft/io/printf.h>
+
+#include <readline/readline.h>
 
 void
-	register_signal_handlers(void)
+	handle_sigint(int signal)
 {
-	signal(SIGINT, handle_signals);
-	signal(SIGQUIT, handle_signals);
+	if (signal != SIGINT)
+		return ;
+	if (shell_get_state()->state != SHELL_READING_HEREDOC)
+	{
+		ft_printf("\n");
+	}
+	if (shell_get_state()->state == SHELL_WAITING)
+	{
+		shell_set_last_status(128 + SIGINT);
+		rl_on_new_line();
+		rl_replace_line("", false);
+		rl_redisplay();
+	}
 }
