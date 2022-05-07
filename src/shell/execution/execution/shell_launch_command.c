@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:59:15 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/07 19:02:58 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <minishell/shell/execution/execution_context.h>
 #include <minishell/shell/execution/redirections.h>
 #include <minishell/shell/shell_colors.h>
+#include <minishell/shell/signals.h>
 
 #include <ft/io/printf.h>
 
@@ -37,13 +38,6 @@ static void
 	dup2(ctx->current_pipe[0], STDIN_FILENO);
 	close(ctx->current_pipe[0]);
 	close(ctx->current_pipe[1]);
-}
-
-static void
-	_reset_signal_handlers(void)
-{
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
 }
 
 bool
@@ -65,7 +59,7 @@ bool
 	}
 	if (pid == 0)
 	{
-		_reset_signal_handlers();
+		register_default_signal_handlers();
 		if (has_output_pipe)
 			_apply_output_pipe(ctx);
 		shell_apply_redirections(command, ctx);

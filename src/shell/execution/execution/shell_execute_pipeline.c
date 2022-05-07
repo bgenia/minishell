@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:19:06 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/07 19:27:31 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 #include <minishell/shell/shell.h>
 #include <minishell/shell/execution/execution.h>
 #include <minishell/shell/execution/execution_context.h>
+#include <minishell/shell/signals.h>
 
 #include <ft/vector/vector.h>
+#include <ft/io/printf.h>
 
 int
 	shell_execute_pipeline(t_ast_pipeline *pipeline, t_execution_context *ctx)
@@ -28,6 +30,7 @@ int
 	bool	error;
 	int		status;
 
+	ignore_signals();
 	error = false;
 	i = 0;
 	while (i < ft_vector_get_size(pipeline->vec_commands) - 1)
@@ -44,5 +47,6 @@ int
 	status = shell_await_children();
 	if (error)
 		status = 126;
+	register_shell_signal_handlers();
 	return (status);
 }
