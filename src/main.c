@@ -6,7 +6,7 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:59:33 by bgenia            #+#    #+#             */
-/*   Updated: 2022/05/05 17:38:59 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/07 19:04:40 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int
 {
 	_process_args(argc, argv);
 	rl_catch_signals = false;
-	register_signal_handlers();
+	register_shell_signal_handlers();
 	shell_start();
 	ft_clearenv();
 	return (0);
