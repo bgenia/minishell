@@ -6,20 +6,30 @@
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:08:57 by bgenia            #+#    #+#             */
-/*   Updated: 2022/04/28 17:11:32 by bgenia           ###   ########.fr       */
+/*   Updated: 2022/05/07 19:34:40 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/types.h>
-#include <sys/wait.h>
+#include <wait.h>
+#include <signal.h>
 
 #include <minishell/shell/shell.h>
 
 #include <ft/io/printf.h>
 
+// Cringe
+static void
+	_print_signal_info(int status)
+{
+	if (WTERMSIG(status) == SIGQUIT)
+		ft_printf("Quit");
+	ft_printf("\n");
+}
+
 static int
-	_process_exit_status(int status)
+	_normalize_exit_status(int status)
 {
 	if (WIFSIGNALED(status))
 		return (128 + WTERMSIG(status));
@@ -38,5 +48,7 @@ int
 	result = 1;
 	while (result > 0)
 		result = waitpid(-1, NULL, 0);
-	return (_process_exit_status(status));
+	if (WIFSIGNALED(status))
+		_print_signal_info(status);
+	return (_normalize_exit_status(status));
 }
