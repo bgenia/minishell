@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.h                                          :+:      :+:    :+:   */
+/*   register_default_signal_handlers.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgenia <bgenia@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 18:27:29 by bgenia            #+#    #+#             */
-/*   Updated: 2022/05/07 19:04:27 by bgenia           ###   ########.fr       */
+/*   Created: 2022/05/07 18:59:30 by bgenia            #+#    #+#             */
+/*   Updated: 2022/05/07 19:00:26 by bgenia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNALS_H
-# define SIGNALS_H
+#include <signal.h>
 
 void
-handle_sigint(int signal);
-void
-handle_sigquit(int signal);
-
-void
-register_shell_signal_handlers(void);
-void
-register_default_signal_handlers(void);
-void
-ignore_signals(void);
-
-#endif
+	register_default_signal_handlers(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+}
